@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/styles/login.css">
+    <link rel="stylesheet" href="/styles/bootstrap.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-6">
+            <div>
+                <h2>WELCOME TO TechTopia</h2>
+                <p>Your one-stop destination for cutting-edge gadgets and innovative technology solutions. Explore our curated selection of devices and embark on a journey to discover the future of tech.</p>
+            </div>
+            <img src="/images/loginImage.svg">
+        </div>
+        <div class="col-6">
+            <div class="panel">
+                <h2>Login</h2>
+                <form action="process_login.php" method="POST">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
