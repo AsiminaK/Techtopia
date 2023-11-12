@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Login Page</title>
-    <link rel="stylesheet" type="text/css" href="styles/login.css">
+    <link href='https://fonts.googleapis.com/css?family=Marmelad' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="styles/login_register.css">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
 </head>
 <body>
-    <div class="container">
-        <div class="left-part">
-            <h2>WELCOME TO TechTopia</h2>
-            <p>Your one-stop destination for cutting-edge gadgets and innovative technology solutions. Explore our curated selection of devices and embark on a journey to discover the future of tech.</p>
-            <img src="images/loginImage.svg" alt="TechTopia Image">
+    <div id="techTopia-login-page">
+        <div class="left-login-part">
+            <div class="login-title">
+                <h2>WELCOME TO TechTopia</h2>
+                <p>Your one-stop destination for cutting-edge gadgets and innovative technology solutions. Explore our curated selection of devices and embark on a journey to discover the future of tech.</p>
+            </div>
+            <img class="login-img" src="images/loginImage.svg" alt="TechTopia Image">
         </div>
-        <div class="right-part">
-            <div class="panel">
+        <div class="right-login-part">
+            <div class="panel techtopia-login-panel">
+                <div class="text-center"><img class="logo-img" src="images/logo.svg" alt="TechTopia"></div>
                 <h2>Login</h2>
                 <form action="" method="POST">
                     <label for="email">Enter your email:</label>
-                    <input type="email" id="email" name="email">
+                    <input class="login-input" type="email" id="email" name="email">
 
                     <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                    <input class="login-input" type="password" id="password" name="password" required>
 
-                    <input type="submit" value="Login">
+                    <button class="login-btn">LOGIN</button>
                 </form>
             </div>
         </div>

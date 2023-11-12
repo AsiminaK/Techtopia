@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(90deg, rgb(43, 70, 139) 0%, rgb(174, 205, 251) 100%);
+  font-family: Marmelad;
+}
+body #techTopia-login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+body #techTopia-login-page .left-login-part {
+  flex: 1;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: end;
+}
+body #techTopia-login-page .left-login-part .login-title {
+  padding: 0 20px 0 20px;
+}
+body #techTopia-login-page .left-login-part .login-title > h2 {
+  text-align: center;
+  color: #F99746;
+  font-family: "Marmelad";
+}
+body #techTopia-login-page .left-login-part .login-title > p {
+  text-align: center;
+  color: white;
+  font-family: "Marmelad";
+}
+body #techTopia-login-page .right-login-part {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+body #techTopia-login-page .right-login-part .techtopia-login-panel {
+  width: 100%;
+  padding: 20px;
+  margin: 20px 20px 20px 0;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  font-family: "Marmelad";
+}
+body #techTopia-login-page .right-login-part .techtopia-login-panel > h2 {
+  color: #F99746;
+}
+body #techTopia-login-page .right-login-part .techtopia-login-panel label {
+  display: block;
+  margin-bottom: 5px;
+  color: #F99746;
+}
+body #techTopia-login-page .right-login-part .techtopia-login-panel .login-input {
+  background-color: #F9DFC8;
+  border: 0;
+  border-radius: 100px;
+  height: 45px;
+}
+body #techTopia-login-page .right-login-part .techtopia-login-panel .login-btn {
+  background-color: #AECDFB;
+  border: 0;
+  border-radius: 100px;
+  width: 100%;
+  height: 45px;
+}
+body #techTopia-login-page .right-login-part .techtopia-login-panel input[type=email],
+body #techTopia-login-page .right-login-part .techtopia-login-panel input[type=password] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+body .login-img {
+  width: 98%;
+}
+body .logo-img {
+  width: 70%;
+  padding: 10px;
+}/*# sourceMappingURL=login_register.css.map */
