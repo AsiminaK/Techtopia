@@ -1,0 +1,22 @@
+$blue_dark: #2c67f2;
+$blue_light: #62cff4;
+$gray_dark: #212121;
+$gray_light: #909090;
+
+body {
+	background: rgb(44,103,242);
+    background: radial-gradient(circle, rgba(44,103,242,1) 0%, rgba(98,207,244,1) 100%);
+	background-size: 100% 1080px;
+	overflow: hidden;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 1;
+    border-radius: 8px;
+}
+
+.form-control {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 8px;
+}

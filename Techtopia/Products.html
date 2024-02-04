@@ -5,6 +5,15 @@
         <title>Our Products</title>
         <link rel="stylesheet" type="text/css" href="styles/products.css">
 
+        <!-- ICONscout cdn-->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+        <!-- ICON LIBRARY-->
+        <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+        <!--GOOGLE FONTS (MONSERRAT)-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     </head>
 <body>
 
@@ -29,48 +38,16 @@
             <!--alernatives for icon button-->
             <!--<button id="open-menu-btn" ><input type="image" src="./icons/menu2.png" alt="MENU" width="20" height="20"></button>
             <button id="close-menu-btn" ><input type="image" src="./icons/cancel.png" alt="MENU" width="20" height="20"></button>-->
-            
+<!--             
             <button id="open-menu-btn"><i class="uil uil-bars"></i></button>
             <button id="close-menu-btn"><i class="uil uil-multiply"></i></button>
-            
+             -->
             <!--<button class="btn"><i class="fa fa-bars"></i></button>
             <button class="btn"><i class="fa fa-close"></i></button>-->
 
         </div>
     </nav>
     <!-- ================================ END OF NAVBAR ====================================== -->
-
-    <div class="container mt-5">
-            <div class="row">
-                <!-- ============================================ DISPLAY PRODUCTS ============================================ -->
-                <div class="col-md-8">
-                    <main role="main">
-                        <div class="container">
-                            <div class="row" data-bind="foreach: Products">
-                                <div class="col-md-4 mt-5 product">
-                                    <img width="100" height="100" data-bind="attr: {src: imageUrl, alt: imageText}" ></img>
-                                    <h5 class="name mt-1" data-bind="text: name"></h5>
-                                    <p class="price mt-1" data-bind="text: formatPrice(price)"></p>
-                                    <button class="addToCart mt-2" data-bind="click: $root.addToCart.bind($data,$data), hidden: $root.isInCart($data) !=null">Add to cart</button>
-                                    <div class="quantityGroup" data-bind="with: $root.isInCart($data)">
-                                        <button class="btn btn-primary" data-bind="click: subtractQuantity"> - </button>
-                                        <input type="text" value="1" data-bind="value: productQuantity, disable: disableInputQuantity">
-                                        <button class="btn btn-primary" data-bind="click: addQuantity"> + </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- ============================================ NO SUCH PRODUCT ============================================ -->
-                        <div class="container" data-bind="visible: existingProduct">
-                            <div class="subcategories bg-warning p-3 rounded">
-                            <p>No results for <b data-bind="text: searchBar()"></b>!</p>
-                            <p>Try checking your spelling!</p>
-                            </div>
-                            <img src="/images/noProducts.png" alt="">
-                        </div>
-                    </main>
-                </div>
-            </div>
-        </div>
+    <script src="/js/extraWork.js"></script>
 </body>
 </html>
