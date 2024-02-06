@@ -3,27 +3,28 @@
     <head>
         <link href="./styles/login.css" rel="stylesheet">
         <script src="https://kit.fontawesome.com/4abb56021f.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <img class="logo_img" src="images/logo.svg" alt="TechTopia Image">
         
         <div class="backwhite">
         </div>
-        <div class="login-container">
+        <div id="login_container" class="login-container">
             <h3>SIGN IN</h3>
             <form>
                 <label class="in-label" for="username">
                     <span class="input-icon"><i class="fa fa-user-o" ></i></span>
-                    <input class="input" type="text" name="username" placeholder="User Name" required>
+                    <input class="input" type="text" name="username" placeholder="UserName"  data-bind="value: user.username" required>
                 </label>
                 <label class="in-label" for="password">
                     <span class="input-icon"><i class="fa fa-key" ></i></span>
-                    <input class="input" type="password" name="password" placeholder="Password" required>
+                    <input class="input" type="password" name="password" placeholder="Password" data-bind="value: user.password" required>
                 </label>
                 <div id="rem-for">
                     <ul>
                         <li>
-
                             <label>
                                 <input type="checkbox" value="Remember me">
                                 <div><span>Remember me</span></div>
@@ -34,7 +35,7 @@
                         </li>
                     </ul>
                 </div>
-                <input type="submit" value="SIGN IN">
+                <input type="submit" value="SIGN IN" data-bind="click: signInBtn">
             </form>
             <span>Still not connected? <a href="#">Sign Up</a></span>
             <div id="or">
@@ -57,5 +58,8 @@
                 </a>
             </div>
         </div>
-    </body>
+        <script src="./js/login.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>    
+</body>
 </html>
