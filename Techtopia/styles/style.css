@@ -1,0 +1,83 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.navbar-brand {
+  font-size: 2 rem;
+  color: black;
+}
+
+.navbar-brand:hover {
+  color: black;
+}
+
+.nav-link {
+  margin-right: 10px;
+  margin-left: 10px;
+  color: black;
+  font-family: "Rubik", sans-serif;
+  text-transform: uppercase;
+}
+
+.nav-link:hover {
+  color: black;
+}
+
+.search {
+  height: 40px;
+  border-radius: 60px;
+  margin-right: -35px;
+  font-family: "Rubik", sans-serif;
+  border: 2px solid rgb(248, 26, 92);
+}
+
+.mybtn {
+  height: 40px;
+  width: 40%;
+  outline: none;
+  border: none;
+  background: rgb(248, 26, 92);
+  color: white;
+  border-radius: 60px;
+  font-weight: 700;
+}
+
+.main {
+  background: url(./images/tech-background.jpg) no-repeat;
+  background-size: cover;
+  height: 100vh;
+  background-position: 50% 50%;
+  width: 100%;
+}
+.main h1 {
+  font-size: 4 rem;
+  font-weight: 700;
+  color: white;
+}
+
+.product h1 {
+  font-weight: 700;
+}
+
+.main-btn {
+  height: 45px;
+  width: 35%;
+  border: none;
+  outline: none;
+  background-color: rgb(248, 26, 92);
+  color: white;
+  border-radius: 60px;
+  font-weight: 700;
+}
+
+.main-btn:hover {
+  background-color: rgb(223, 15, 77);
+  transition: 0.5s;
+}
+
+.card:hover {
+  box-shadow: 11px 15px 21px -6px rgba(0, 0, 0, 0.43);
+  transition: 0.5s;
+}/*# sourceMappingURL=style.css.map */
