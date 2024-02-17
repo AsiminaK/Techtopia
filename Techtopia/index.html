@@ -12,13 +12,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4abb56021f.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <title>TechTopia</title>
   </head>
-  <body>
+  <body id="main_container">
     <!-- =========================== NAVBAR =========================== -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg bg-white shadow fixed-top">
         <div class="container">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="#header">
             <img class="logo_img" style="width: 20%;" src="./styles/images/TechTopia.png" alt="TechTopia Image">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,45 +29,77 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav m-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a class="nav-link" href="#header" >Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Trending</a>
+                  <a class="nav-link" href="#trending">Trending</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Store</a>
+                  <a class="nav-link" href="#collection">Store</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">US</a>
+                  <a class="nav-link" href="#about">About</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
+                  <a class="nav-link" href="#contact">Contact</a>
               </li>              
             </ul>
-            <form class="d-flex">
-              <input class="px-2 search" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn mybtn" type="submit">Search</button>
+            <form class="d-flex rds">
+              <input class="px-2 search" type="search" placeholder="Search" aria-label="Search" data-bind="value: searchBar">
+              <a class="btn mybtn" type="submit" href="#collection">Search</a>
             </form>
-            <a class="d-flex" href="#">
-              <i class="fa fa-shopping-cart"></i>
-            </a>
+            <a class="cartImgBtn position-absolute end-0 bg-transparent border-0 px-3" data-bs-toggle="offcanvas" role="button" aria-controls="offcanvasExample" data-bind="click: displaySavedProductsBtn"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <!-- ================================ SHOPPING CART ============================================ -->
+              <div class="sidePanelCart sidePanelCart-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" data-bind="css: { 'open': displaySidePanel() }">
+                <div data-bind="visible: emptyCart" class="emptyCartImg">EMPTY</div>
+                <div class="displayMyCart">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="myCart">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: savedProducts">
+                                    <tr class="savedProduct">
+                                        <td class="productName" data-bind="text: product.name"></td>
+                                        <td class="productPrice" data-bind="text: formatPrice(product.price)"></td>
+                                        <td class="quantityGroup" data-bind="with: $data">
+                                            <button class="btn btn-primary" data-bind="click: subtractQuantity"> - </button>
+                                            <input class="w-25" data-bind="value: productQuantity, disable: disableInputQuantity">
+                                            <button class="btn btn-primary"data-bind="click: addQuantity"> + </button>
+                                        </td>
+                                        <td class="subtotal" data-bind="text: formatPrice(SubtotalPrice())"></td>
+                                        <td class="delete"><a href="#" data-bind="click: $root.deleteProduct"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <p class="totalPrice"> Total Price: <span data-bind="text: formatPrice(totalPrice())"></span></p>
+            </div>
           </div>
         </div>
     </nav>
     <!-- =========================== HEADER SECTION =========================== -->
-    <section class="main">
-        <div class="container py-5">
-            <div class="row py-4">
-                <div class="col-sm-12 pt-5 text-center">
-                    <h1 class="pt-5">Your Technology Our Priority !</h1>
-                    <button class="main-btn mt-3">Check More</button>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="main" id="header">
+      <div class="container py-5">
+          <div class="row py-4">
+              <div class="col-sm-12 pt-5 text-center">
+                  <h1 class="pt-5">Your Technology Our Priority!</h1>
+                  <button class="main-btn mt-3" onclick="window.location.href='#collection';">Check More</button>
+              </div>
+          </div>
+      </div>
+  </section>  
     
     <!-- =========================== TRENDINGS SECTION =========================== -->
-    <section class="product">
+    <section class="product" id="trending">
         <div class="container py-5 text-center">
             <div class="row py-5 m-auto text-center">
                 <div class="col-lg-12 text-center">
@@ -113,105 +147,52 @@
             </div>
             <div class="row">
                 <div class="col-lg-6 text-center m-auto">
-                    <button class="main-btn">Click For More</button>
+                    <button class="main-btn" onclick="window.location.href='#collection';">Click For More</button>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- =========================== PRODUCTS SECTION =========================== -->
-    <section id = "collection" class = "py-5">
-      <div class = "container">
-          <div class = "title text-center">
-              <h2 class = "position-relative d-inline-block">New Collection</h2>
-          </div>
-
-          <div class = "row g-0">
-              <div class = "d-flex flex-wrap justify-content-center mt-5 filter-button-group">
-                  <button type = "button" class = "btn m-2 text-dark active-filter-btn" data-filter = "*">All</button>
-                  <button type = "button" class = "btn m-2 text-dark" data-filter = ".best">Best Sellers</button>
-                  <button type = "button" class = "btn m-2 text-dark" data-filter = ".feat">Featured</button>
-                  <button type = "button" class = "btn m-2 text-dark" data-filter = ".new">New Arrival</button>
-              </div>
-              <div class="col-xs-12 col-sm-6 col-lg-3 px-2 pb-2">
-                  <div class="card">
-                      <img src="styles/images/cell.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                          <h5 class="card-title">TIRAMISU CAKE</h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-                              dignissimos accusantium amet similique velit iste.</p>
-                      </div>
-                      <div class="mb-5 d-flex justify-content-around">
-                          <h3>190$</h3>
-                          <button class="btn btn-primary">Buy Now</button>
-                      </div>
-                  </div>
+    <section id="collection" class="py-5">
+      <div class="container">
+          <div class="row g-0">
+              <div class="d-flex flex-wrap justify-content-center align-items-center mt-5 filter-button-group rds" data-bind="foreach: Categories">
+                  <button type="button" class="btn category-button m-2 text-dark rds" data-filter=".new" data-bind="text: $data, click: () => $root.chooseCategory($data),css: { 'active-filter-btn': $root.selectedCategory() === $data }">New Arrival</button>
               </div>
   
-              <div class="col-xs-12 col-sm-6 col-lg-3 px-2 pb-2">
-                  <div class="card">
-                      <img src="styles/images/cell.jpg" class="card-img-top" alt="...">
+              <div class="row justify-content-center p-0" data-bind="foreach: Products">
+                  <div class="card col-xs-12 col-sm-6 col-md-4 col-lg-3 m-1 p-0">
+                      <img src="" class="card-img-top" alt="..." data-bind="attr: {src: image, alt: imageText}">
                       <div class="card-body">
-                          <h5 class="card-title">TIRAMISU CAKE</h5>
+                          <h5 class="card-title" data-bind="text: name">TIRAMISU CAKE</h5>
                           <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
                               dignissimos accusantium amet similique velit iste.</p>
                       </div>
-                      <div class="mb-5 d-flex justify-content-around">
-                          <h3>190$</h3>
-                          <button class="btn btn-primary">Buy Now</button>
+                      <div class="px-3 mb-4 d-flex justify-content-around">
+                          <h3 class="product-price" data-bind="text: formatPrice(price)">190$</h3>
+                          <button class="btn product-btn rds" data-bind="click: $root.addToCart.bind($data,$data), hidden: $root.isInCart($data) !=null">Add To Cart <i class="fa-solid fa-cart-shopping"></i></button>
+                          <div class="qty-input" data-bind="with: $root.isInCart($data), visible: $root.isInCart($data) != null">
+                            <a class="qty-count qty-count--minus btn" data-action="minus" data-bind="click: subtractQuantity"><i class="fa fa-minus" aria-hidden="true"></i> </a>
+                            <input class="product-qty form-control bg-white" type="number" name="product-qty" min="0" max="100" value="1" data-bind="value: productQuantity, disable: disableInputQuantity">
+                            <a class="qty-count qty-count--add btn" data-action="add" data-bind="click: addQuantity"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                          </div>
                       </div>
                   </div>
-              </div>
-  
-              <div class="col-xs-12 col-sm-6 col-lg-3 px-2 pb-2">
-                  <div class="card">
-                      <img src="styles/images/cell.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                          <h5 class="card-title">TIRAMISU CAKE</h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-                              dignissimos accusantium amet similique velit iste.</p>
-                      </div>
-                      <div class="mb-5 d-flex justify-content-around">
-                          <h3>190$</h3>
-                          <button class="btn btn-primary">Buy Now</button>
-                      </div>
-                  </div>
-              </div>
-  
-              <div class="col-xs-12 col-sm-6 col-lg-3 px-2 pb-2">
-                  <div class="card">
-                      <img src="styles/images/cell.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                          <h5 class="card-title">TIRAMISU CAKE</h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-                              dignissimos accusantium amet similique velit iste.</p>
-                      </div>
-                      <div class="mb-5 d-flex justify-content-around">
-                          <h3>190$</h3>
-                          <button class="btn btn-primary">Buy Now</button>
-                      </div>
-                  </div>
-              </div>
-  
-              <div class="col-xs-12 col-sm-6 col-lg-3 px-2 pb-2">
-                  <div class="card">
-                      <img src="styles/images/cell.jpg" class="card-img-top" alt="...">
-                      <div class="card-body">
-                          <h5 class="card-title">TIRAMISU CAKE</h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-                              dignissimos accusantium amet similique velit iste.</p>
-                      </div>
-                      <div class="mb-5 d-flex justify-content-around">
-                          <h3>190$</h3>
-                          <button class="btn btn-primary">Buy Now</button>
-                      </div>
-                  </div>
-              </div>
               </div>
           </div>
       </div>
+    </div>
+    <!-- ============================================ NO SUCH PRODUCT ============================================ -->
+    <div class="container" data-bind="visible: existingProduct">
+      <div class="alert alert-ligh rounded p-3 text-center" role="alert">
+          <!-- <p class="mb-0">No results for <strong data-bind="text: searchBar()"></strong>!</p>
+          <p class="mb-0">Try checking your spelling!</p> -->
+          <img src="./styles/images/notFound.png" alt="">
+      </div>
+    </div>
   </section>
-
+  
   <!-- =========================== FOOTER =========================== -->
     <footer class="footer">
       <div class="container footer__container">
@@ -264,5 +245,9 @@
       </div>
       
     </footer>
+
+    <script src="./js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>    
+
   </body>
 </html>

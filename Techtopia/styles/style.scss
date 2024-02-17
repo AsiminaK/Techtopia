@@ -14,7 +14,7 @@ $border-color_1: rgb(248, 26, 92);
 }
 
 .btn-primary{
-    background-color: var($background-color_1)!important;
+    background-color: rgb(248, 26, 92)!important;
 }
 
 /* Navbar */
@@ -105,10 +105,21 @@ $border-color_1: rgb(248, 26, 92);
 .card{
     border-radius: 30px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    .justify-content-around {
+        .btn-primary{
+            background-color: rgb(248, 26, 92)!important;
+        }
+    }
+    
 }
 .card-body{
-    padding: 25px;
+    padding: 15px;
     margin-top: -15px;
+
+    img {
+       aspect-ratio: 1;
+       object-fit: contain;
+    }
 }
 
 h3,h5{
@@ -121,8 +132,12 @@ h3,h5{
     color: #fff!important;
     border-color: rgb(248, 26, 92)!important;
 }
+.active-filter-btn :hover{
+    color: #fff;
+}
 .filter-button-group .btn:hover{
-    color: #fff!important;
+    color: grey;
+    box-shadow: 1px 3px 3px 0px rgba(179,179,179,1);
 }
 .collection-img span{
     top: 20px;
@@ -151,11 +166,24 @@ h3,h5{
             transform: scale(1.2);
 }
 
-.card:hover {
-    -webkit-box-shadow: 11px 15px 21px -6px rgba(0, 0, 0, 0.43);
-    -moz-box-shadow: 11px 15px 21px -6px rgba(0, 0, 0, 0.43);
-    box-shadow: 11px 15px 21px -6px rgba(0, 0, 0, 0.43);
-    transition: 0.5s;
+.product-btn {
+    border: 2px solid rgb(248, 26, 92);
+    background-color: #fff;
+    padding: 0;
+    width: 50%;
+    
+    i {
+        color: rgb(223, 15, 77);
+    }
+}
+
+.product-btn:hover {
+    background-color: rgb(248, 26, 92);
+    color: white;
+    
+    i {
+        color: white;
+    }
 }
 
 /* Footer */
@@ -207,4 +235,131 @@ h3,h5{
     margin-top: 4rem;
     padding: 1.2rem 0;
     border-top: 1px dotted black;
+}
+
+.rds {
+    border-radius: 60px !important;
+}
+
+.active {
+    color: rgb(248, 26, 92);
+}
+.qty-input {
+    color: #000;
+    background: #fff;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 60px;
+    border: 2px solid rgb(248, 26, 92);
+}
+
+.product-qty,
+.qty-count {
+    background: transparent;
+    color: inherit;
+    font-weight: bold;
+    font-size: inherit;
+    border: none;
+    display: inline-block;
+    min-width: 0;
+    height: fit-content;
+    line-height: 1;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.product-qty {
+    width: fit-content;
+    min-width: 0;
+    display: inline-block;
+    text-align: center;
+    appearance: textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+    }
+}
+
+.qty-count {
+    padding: 0;
+    cursor: pointer;
+    width: 2.5rem;
+    font-size: 1.25em;
+    text-indent: -100px;
+    overflow: hidden;
+    position: relative;
+
+    &:before,
+    &:after {
+        content: "";
+        height: 2px;
+        width: 10px;
+        position: absolute;
+        display: block;
+        background: #000;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+    &:--minus {
+        border-right: 1px solid #e2e2e2; /* Use appropriate color */
+    }
+    &:--add {
+        border-left: 1px solid #e2e2e2; /* Use appropriate color */
+        &:after {
+            transform: rotate(90deg);
+        }
+    }
+
+    &:disabled {
+        color: #ccc; /* Use appropriate color */
+        background: #f2f2f2; /* Use appropriate color */
+        cursor: not-allowed;
+        border-color: transparent;
+
+        &:before,
+        &:after {
+            background: #ccc; /* Use appropriate color */
+        }
+    }
+}
+
+
+.cartImgBtn {
+    font-size: x-large;
+    color: black;
+}
+
+.cartImgBtn:hover{
+    color: rgb(68, 68, 68);
+}
+
+// Off-canvas styles
+.sidePanelCart {
+    position: absolute;
+    top: 80px;
+    right: -1000px; // Initially hide the off-canvas panel off-screen
+    width: auto;
+    height: auto;
+    background-color: #fff; // Adjust as needed
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: right 0.3s ease; // Smooth transition for the opening/closing effect
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.sidePanelCart.open {
+    right: 10px; // Show the off-canvas panel by bringing it to the left edge of the screen
+}
+
+.product-price {
+    width: 50%;
 }
