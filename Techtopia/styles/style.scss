@@ -1,15 +1,32 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
+/* Variables */
+$color_1: #fff;
+$background-color_1: rgb(248, 26, 92);
+$border-color_1: rgb(248, 26, 92);
+
+.bg-primary{
+    background-color: var($background-color_1)!important;
+}
+
+.btn-primary{
+    background-color: var($background-color_1)!important;
+}
+
+/* Navbar */
 .navbar-brand {
-    font-size: 2 rem;
+    font-size: 2rem;
     color: black;
 }
+
 .navbar-brand:hover {
     color: black;
 }
+
 .nav-link {
     margin-right: 10px;
     margin-left: 10px;
@@ -17,6 +34,7 @@
     font-family: "Rubik", sans-serif;
     text-transform: uppercase;
 }
+
 .nav-link:hover {
     color: black;
 }
@@ -40,23 +58,18 @@
     font-weight: 700;
 }
 
+/* Main Section */
 .main {
-    background: url(./images/tech-background.jpg)no-repeat;
+    background: url(./images/tech-background.jpg) no-repeat;
     background-size: cover;
     height: 100vh;
     background-position: 50% 50%;
     width: 100%;
+    
     h1 {
-        font-size: 4 rem;
+        font-size: 4rem;
         font-weight: 700;
         color: white;
-    }
-    
-}
-
-.product {
-    h1 {
-        font-weight: 700;
     }
 }
 
@@ -70,59 +83,128 @@
     border-radius: 60px;
     font-weight: 700;
 }
+
 .main-btn:hover {
     background-color: rgb(223, 15, 77);
     transition: 0.5s;
 }
 
+/* Product Section */
+.product {
+    h1 {
+        font-weight: 700;
+    }
+}
+
+/* collection */
+/* special */
+.card-img-top{
+    border-radius: 50px;
+    padding: 20px;
+}
+.card{
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+}
+.card-body{
+    padding: 25px;
+    margin-top: -15px;
+}
+
+h3,h5{
+    color: rgb(248, 26, 92);
+}
+
+/* collection */
+.active-filter-btn{
+    background-color: rgb(248, 26, 92)!important;
+    color: #fff!important;
+    border-color: rgb(248, 26, 92)!important;
+}
+.filter-button-group .btn:hover{
+    color: #fff!important;
+}
+.collection-img span{
+    top: 20px;
+    right: 20px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+}
+
+/* special */
+.special-img span{
+    top: 20px;
+    right: 20px;
+}
+.special-list .btn{
+    padding: 8px 20px!important;
+}
+.special-img img{
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.special-img:hover img{
+    -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+            transform: scale(1.2);
+}
+
 .card:hover {
-    -webkit-box-shadow: 11px 15px 21px -6px rgba(0,0,0,0.43);
-    -moz-box-shadow: 11px 15px 21px -6px rgba(0,0,0,0.43);
-    box-shadow: 11px 15px 21px -6px rgba(0,0,0,0.43);
+    -webkit-box-shadow: 11px 15px 21px -6px rgba(0, 0, 0, 0.43);
+    -moz-box-shadow: 11px 15px 21px -6px rgba(0, 0, 0, 0.43);
+    box-shadow: 11px 15px 21px -6px rgba(0, 0, 0, 0.43);
     transition: 0.5s;
 }
 
-
-/* ===================================== FOOTER ======================================== */
+/* Footer */
 .footer {
-	background: rgb(248, 26, 92);
-	padding-top: 5rem;
-	font-size: 0.9rem;
-	ul {
-		li {
-			margin-bottom: 0.7rem;
-			a {
-				&:hover {
-					text-decoration: underline;
-				}
-			}
-		}
-	}
+    background: rgb(248, 26, 92);
+    padding-top: 5rem;
+    font-size: 0.9rem;
+    
+    ul {
+        li {
+            margin-bottom: 0.7rem;
+            
+            a {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
 }
+
 .footer__container {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 5rem;
-	>div {
-		h4 {
-			margin-bottom: 1.2rem;
-		}
-	}
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5rem;
+    
+    > div {
+        h4 {
+            margin-bottom: 1.2rem;
+        }
+    }
 }
+
 .footer__1 {
-	p {
-		margin: 0 0 2rem;
-	}
+    p {
+        margin: 0 0 2rem;
+    }
 }
+
 .footer__socials {
-	display: flex;
-	gap: 1rem;
-	font-size: 1.2rem;
-	margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    font-size: 1.2rem;
+    margin-top: 2rem;
 }
+
 .footer__copyright {
-	text-align: center;
-	margin-top: 4rem;
-	padding: 1.2rem 0;
-	border-top: 1px dotted black;
+    text-align: center;
+    margin-top: 4rem;
+    padding: 1.2rem 0;
+    border-top: 1px dotted black;
 }
