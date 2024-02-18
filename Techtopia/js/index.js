@@ -1,68 +1,3 @@
-var data = {
-    "categories": [
-      {
-        "name": "Phones",
-        "products": [
-          {
-            "name": "iPhone 12",
-            "price": 999,
-            "image": "./styles/images/cell.jpg"
-          },
-          {
-            "name": "Samsung Galaxy S21",
-            "price": 899,
-            "image": "./styles/images/cell.jpg"
-          },
-          {
-            "name": "Google Pixel 5",
-            "price": 699,
-            "image": "./styles/images/cell.jpg"
-          }
-        ]
-      },
-      {
-        "name": "TVs",
-        "products": [
-          {
-            "name": "LG OLED55CXPUA",
-            "price": 1499,
-            "image": "./styles/images/xbox.jpg"
-          },
-          {
-            "name": "Samsung QN55Q80TAFXZA",
-            "price": 1299,
-            "image": "./styles/images/controller.jpg"
-          },
-          {
-            "name": "Sony XBR-55A9G",
-            "price": 1799,
-            "image": "./styles/images/cell.jpg"
-          }
-        ]
-      },
-      {
-        "name": "Consoles",
-        "products": [
-          {
-            "name": "PlayStation 5",
-            "price": 499,
-            "image": "./styles/images/controller.jpg"
-          },
-          {
-            "name": "Xbox Series X",
-            "price": 499,
-            "image": "./styles/images/xbox.jpg"
-          },
-          {
-            "name": "Nintendo Switch",
-            "price": 299,
-            "image": "./styles/images/controller.jpg"
-          }
-        ]
-      }
-    ]
-  };
-
 var formatPrice = function(myPrice) {
 return myPrice ? myPrice.toFixed(2) + "€" : "0.00€";
 } 
@@ -137,15 +72,10 @@ var MainViewModel = function (data) {
     self.productData = data;
     self.selectedCategory = ko.observable('All Products');
 
-    self.Categories = ko.observableArray();
     self.savedProducts = ko.observableArray([]);
     self.searchBar = ko.observable("");
     self.existingProduct = ko.observable(false);
-    
-    self.productData.categories.forEach(category => {
-        self.Categories.push(category.name);
-    });
-
+  
     self.Categories = ko.computed(function () {
         var retVal = [];
         
@@ -265,8 +195,29 @@ var MainViewModel = function (data) {
     };
 }
 
+async function fetchData() {
+  try {
+    const response = await fetch('http://localhost:3000/data');
+    if (!response.ok) {
+      throw new Error('Something went wrong!');
+    }
+    const data = await response.json();
+    return data;
+  }
+  catch (error) {
+    console.error('Something went wrong with fetch!', error);
+    throw error;
+  }
+}
+
 var mainViewModel;
-$(document).ready(function () {
-    mainViewModel = new MainViewModel(data);
-    mainViewModel.activate();
+$(document).ready(async function () {
+    try {
+        var fetchedDataResult = await fetchData();
+        mainViewModel = new MainViewModel(fetchedDataResult);
+        mainViewModel.activate(); 
+        console.log(fetchedDataResult);
+    } catch (error) {
+        console.error('Error during document ready:', error);
+    }
 });

@@ -1,17 +1,37 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  background: rgb(44, 103, 242);
-  background: radial-gradient(circle, rgb(44, 103, 242) 0%, rgb(98, 207, 244) 100%);
+  background: rgb(248, 26, 92);
+  background: radial-gradient(circle, rgb(0, 0, 0) 32%, rgb(248, 26, 92) 100%);
   background-size: 100% 1080px;
   overflow: hidden;
 }
 
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  z-index: 1;
+.container {
   border-radius: 8px;
 }
 
 .form-control {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 8px;
+  border: 0;
+}
+
+.logo_img {
+  width: 18%;
+}
+
+.bg-dark {
+  background-color: black !important;
+}
+
+.signIn-btn {
+  background: linear-gradient(90deg, black 0%, rgb(248, 26, 92) 65%);
+  width: 100%;
+  border-radius: 8px;
+  border: 0;
 }/*# sourceMappingURL=register.css.map */

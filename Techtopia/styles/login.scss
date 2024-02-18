@@ -1,6 +1,6 @@
-$blue_dark: #2c67f2;
-$blue_light: #62cff4;
-$gray_dark: #212121;
+$blue_dark: rgb(248, 26, 92);
+$blue_light: rgb(248, 26, 92);
+$gray_dark: black;
 $gray_light: #909090;
 
 @font-face {
@@ -31,8 +31,7 @@ html {
 }
 
 body {
-    background: linear-gradient(180deg, $blue_light 0%, $blue_dark 40%);
-    min-height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(248,26,92,1) 100%);
     overflow: hidden;
     text-align: center;
 }
@@ -136,7 +135,7 @@ p {
             }
 
             &[type=submit] {
-                background: linear-gradient(90deg, $blue_light 0%, $blue_dark 65%);
+                background: linear-gradient(90deg, black 0%, $blue_dark 65%);
             }
 
             &[type=checkbox], &[type=submit] {

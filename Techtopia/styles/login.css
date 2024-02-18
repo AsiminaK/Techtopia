@@ -13,8 +13,7 @@ html {
 }
 
 body {
-  background: linear-gradient(180deg, #62cff4 0%, #2c67f2 40%);
-  min-height: 100%;
+  background: radial-gradient(circle, rgb(0, 0, 0) 0%, rgb(248, 26, 92) 100%);
   overflow: hidden;
   text-align: center;
 }
@@ -35,7 +34,7 @@ h2 {
 }
 
 p {
-  color: #212121;
+  color: black;
   font-size: small;
 }
 
@@ -67,7 +66,7 @@ p {
   border-radius: 8px;
 }
 .login-container h3 {
-  color: #212121;
+  color: black;
   font-size: 20px;
   font-weight: bold;
 }
@@ -109,7 +108,7 @@ p {
 }
 .login-container form input[type=text], .login-container form input[type=password] {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  color: #212121;
+  color: black;
   font-size: 14px;
   padding: 15px 0 15px 60px;
   text-align: left;
@@ -128,7 +127,7 @@ p {
   width: 20px;
 }
 .login-container form input[type=submit] {
-  background: linear-gradient(90deg, #62cff4 0%, #2c67f2 65%);
+  background: linear-gradient(90deg, black 0%, rgb(248, 26, 92) 65%);
 }
 .login-container form input[type=checkbox]:hover, .login-container form input[type=submit]:hover {
   cursor: pointer;
@@ -155,7 +154,7 @@ p {
   fill: currentColor;
 }
 .login-container a {
-  color: #2c67f2;
+  color: rgb(248, 26, 92);
   text-decoration: none;
 }
 .login-container span {
@@ -172,7 +171,7 @@ p {
   width: fit-content;
 }
 .login-container #or div {
-  background: #2c67f2;
+  background: rgb(248, 26, 92);
   border: none;
   height: 1px;
   transform: translateY(-50%);
@@ -180,7 +179,7 @@ p {
 }
 .login-container #or #circle {
   background: white;
-  border: 1px #2c67f2 solid;
+  border: 1px rgb(248, 26, 92) solid;
   border-radius: 100%;
   color: #909090;
   font-size: 14px;

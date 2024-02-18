@@ -1,22 +1,42 @@
-$blue_dark: #2c67f2;
-$blue_light: #62cff4;
+$blue_dark: rgb(248, 26, 92);
+$blue_light: rgb(248, 26, 92);
 $gray_dark: #212121;
 $gray_light: #909090;
 
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-	background: rgb(44,103,242);
-    background: radial-gradient(circle, rgba(44,103,242,1) 0%, rgba(98,207,244,1) 100%);
+	background: rgb(248, 26, 92);
+    background: radial-gradient(circle, rgba(0,0,0,1) 32%, rgba(248,26,92,1) 100%);
 	background-size: 100% 1080px;
 	overflow: hidden;
 }
 
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    z-index: 1;
+.container {
     border-radius: 8px;
 }
 
 .form-control {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 8px;
+    border: 0;
+}
+
+.logo_img {
+    width: 18%;
+}
+
+.bg-dark {
+    background-color: black !important;
+}
+
+.signIn-btn {
+    background: linear-gradient(90deg, black 0%, $blue_dark 65%);
+    width: 100%;
+    border-radius: 8px;
+    border: 0;
 }
