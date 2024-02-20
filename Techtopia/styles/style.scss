@@ -322,6 +322,15 @@ h3,h5{
     color: rgb(68, 68, 68);
 }
 
+.userImgBtn {
+    font-size: x-large;
+    color: rgb(248, 26, 92);
+}
+
+.userImgBtn:hover {
+    color: rgb(223, 15, 77);
+}
+
 // Off-canvas styles
 .sidePanelCart {
     position: absolute;

@@ -303,6 +303,15 @@ h3, h5 {
   color: rgb(68, 68, 68);
 }
 
+.userImgBtn {
+  font-size: x-large;
+  color: rgb(248, 26, 92);
+}
+
+.userImgBtn:hover {
+  color: rgb(223, 15, 77);
+}
+
 .sidePanelCart {
   position: absolute;
   top: 80px;
