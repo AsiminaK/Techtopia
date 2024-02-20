@@ -293,24 +293,6 @@ h3, h5 {
   right: 0;
   margin: auto;
 }
-.qty-count:--minus {
-  border-right: 1px solid #e2e2e2; /* Use appropriate color */
-}
-.qty-count:--add {
-  border-left: 1px solid #e2e2e2; /* Use appropriate color */
-}
-.qty-count:--add:after {
-  transform: rotate(90deg);
-}
-.qty-count:disabled {
-  color: #ccc; /* Use appropriate color */
-  background: #f2f2f2; /* Use appropriate color */
-  cursor: not-allowed;
-  border-color: transparent;
-}
-.qty-count:disabled:before, .qty-count:disabled:after {
-  background: #ccc; /* Use appropriate color */
-}
 
 .cartImgBtn {
   font-size: x-large;

@@ -18,7 +18,7 @@
   </head>
   <body id="main_container">
     <!-- =========================== NAVBAR =========================== -->
-    <nav class="navbar navbar-expand-lg bg-white shadow fixed-top">
+    <nav class="navbar navbar-expand-sm bg-white shadow fixed-top">
         <div class="container">
           <a class="navbar-brand" href="#header">
             <img class="logo_img" style="width: 20%;" src="./styles/images/TechTopia.png" alt="TechTopia Image">
@@ -51,8 +51,8 @@
             <a class="cartImgBtn position-absolute end-0 bg-transparent border-0 px-3" data-bs-toggle="offcanvas" role="button" aria-controls="offcanvasExample" data-bind="click: displaySavedProductsBtn"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
             <!-- ================================ SHOPPING CART ============================================ -->
               <div class="sidePanelCart sidePanelCart-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" data-bind="css: { 'open': displaySidePanel() }">
-                <div data-bind="visible: emptyCart" class="emptyCartImg">EMPTY</div>
-                <div class="displayMyCart">
+                <div data-bind="visible: emptyCart" class="emptyCartImg w-25"><img class="w-25 " src="./styles/images/empty-cart.svg" alt="EMPTY CART"></div>
+                <div class="displayMyCart" data-bind="visible: !emptyCart()">
                     <div class="row">
                         <div class="col-md-12">
                             <table class="myCart">
@@ -68,10 +68,10 @@
                                     <tr class="savedProduct">
                                         <td class="productName" data-bind="text: product.name"></td>
                                         <td class="productPrice" data-bind="text: formatPrice(product.price)"></td>
-                                        <td class="quantityGroup" data-bind="with: $data">
-                                            <button class="btn btn-primary" data-bind="click: subtractQuantity"> - </button>
-                                            <input class="w-25" data-bind="value: productQuantity, disable: disableInputQuantity">
-                                            <button class="btn btn-primary"data-bind="click: addQuantity"> + </button>
+                                        <td class="qty-input" data-bind="with: $data">
+                                            <a class="qty-count qty-count--minus btn" data-action="minus" data-bind="click: subtractQuantity"><i class="fa fa-minus" aria-hidden="true"></i> </a>
+                                            <input class="product-qty form-control bg-white" type="number" name="product-qty" min="0" max="100" value="1" data-bind="value: productQuantity, disable: disableInputQuantity">
+                                            <a class="qty-count qty-count--add btn" data-action="add" data-bind="click: addQuantity"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                         </td>
                                         <td class="subtotal" data-bind="text: formatPrice(SubtotalPrice())"></td>
                                         <td class="delete"><a href="#" data-bind="click: $root.deleteProduct"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
@@ -111,11 +111,11 @@
                 <div class="col-lg-3 text-center">
                     <div class="card border-0 bg-light mb-2">
                         <div class="card-body">
-                            <img src="./styles/images/cell.jpg" style="width: 100%;" class="img-luid" alt="">
+                            <img src="./styles/images/iphone_12.png" style="width: 100%;" class="img-luid" alt="">
                         </div>
                     </div>
-                    <h6>Cellphones</h6>
-                    <p>149.99€</p>
+                    <h6>iPhone 12</h6>
+                    <p>569.99€</p>
                 </div>
                 <div class="col-lg-3 text-center">
                     <div class="card border-0 bg-light mb-2">
@@ -123,26 +123,26 @@
                             <img src="./styles/images/laptop.png" style="width: 100%;" class="img-luid" alt="">
                         </div>
                     </div>
-                    <h6>Laptops</h6>
-                    <p>549.99€</p>
+                    <h6>HP Laptop 14-em0001nv</h6>
+                    <p>749.99€</p>
                 </div>
                 <div class="col-lg-3 text-center">
                     <div class="card border-0 bg-light mb-2">
                         <div class="card-body">
-                            <img src="./styles/images/controller.jpg" style="width: 100%;" class="img-luid" alt="">
+                            <img src="./styles/images/vr-headset.png" style="width: 100%;" class="img-luid" alt="">
                         </div>
                     </div>
-                    <h6>Controllers</h6>
-                    <p>149.99€</p>
+                    <h6>Oculus-Rift VR-Headset</h6>
+                    <p>636.67€</p>
                 </div>
                 <div class="col-lg-3 text-center">
                     <div class="card border-0 bg-light mb-2">
                         <div class="card-body">
-                            <img src="./styles/images/xbox.jpg" style="width: 100%;" class="img-luid" alt="">
+                            <img src="./styles/images/ps5.png" style="width: 100%;" class="img-luid" alt="">
                         </div>
                     </div>
-                    <h6>Xbox</h6>
-                    <p>149.99€</p>
+                    <h6>Sony PlayStation 5 Disc Edition 1TB</h6>
+                    <p>498.39€</p>
                 </div>
             </div>
             <div class="row">
@@ -154,8 +154,8 @@
     </section>
 
     <!-- =========================== PRODUCTS SECTION =========================== -->
-    <section id="collection" class="py-5">
-      <div class="container">
+    <section id="collection">
+      <div class="container py-5">
           <div class="row g-0">
               <div class="d-flex flex-wrap justify-content-center align-items-center mt-5 filter-button-group rds" data-bind="foreach: Categories">
                   <button type="button" class="btn category-button m-2 text-dark rds" data-filter=".new" data-bind="text: $data, click: () => $root.chooseCategory($data),css: { 'active-filter-btn': $root.selectedCategory() === $data }">New Arrival</button>
@@ -193,8 +193,8 @@
     </div>
   </section>
   <!-- ============================================ ABOUT US ============================================ -->
-  <section id="about" class="py-5">
-    <div class="container">
+  <section id="about">
+    <div class="container py-5">
         <div class="row">
             <div class="col-12">
                 <h1 class="text-center py-5">About Us</h1>
