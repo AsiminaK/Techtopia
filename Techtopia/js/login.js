@@ -9,9 +9,37 @@ var LoginViewModel = function () {
     self.user = new UserViewModel();
 
     self.signInBtn = function () {
-        debugger;
-        console.log(ko.mapping.toJS(self.user)); 
+        var user = {
+            username: self.user.username(),
+            password: self.user.password()
+        };
+
+        try {
+            fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(user)
+            })
+            .then(function(response) {
+                if (!response.ok) {
+                    alert('Incorrect Username and/or Password');
+                    return;
+                }
+                window.location.href = "http://127.0.0.1:5500/Techtopia/Index.html";
+            })
+            .catch(function(error) {
+                console.error('Something went wrong with fetch!', error);
+                throw error;
+            });
+        } catch (error) {
+            console.error('Something went wrong with fetch!', error);
+            throw error;
+        }
     }
+    
 
     self.activate = function () {
         var element = $('#login_container')[0];
