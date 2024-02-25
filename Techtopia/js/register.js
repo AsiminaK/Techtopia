@@ -1,21 +1,33 @@
-var UserViewModel = function () {
+var NewUserViewModel = function () {
     var self = this;
-    self.username = ko.observable();
-    self.password = ko.observable();
+    self.Firstname = ko.observable();
+    self.Lastname = ko.observable();
+    self.Username = ko.observable();
+    self.Email = ko.observable();
+    self.Password = ko.observable();
+    self.Address = ko.observable();
+    self.City = ko.observable();
+    self.Zip = ko.observable();
 }
 
-var LoginViewModel = function () {
+var RegisterViewModel = function () {
     var self = this;
-    self.user = new UserViewModel();
+    self.newUser = new NewUserViewModel();
 
-    self.signInBtn = async function () {
+    self.signUpBtn = async function () {
         var user = {
-            username: self.user.username(),
-            password: self.user.password()
+            username: self.newUser.Username(),
+            password: self.newUser.Password(),
+            firstname: self.newUser.Firstname(),
+            lastname: self.newUser.Lastname(),
+            email: self.newUser.Email(),
+            address: self.newUser.Address(),
+            city: self.newUser.City(),
+            zip: self.newUser.Zip()
         };
-    
+        
         try {
-            await fetch('http://localhost:3000/login', {
+            await fetch('http://localhost:3000/register', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -25,7 +37,7 @@ var LoginViewModel = function () {
             })
             .then(async function(response) {
                 if (!response.ok) {
-                    alert('Incorrect Username and/or Password');
+                    alert('Registration Failed');
                     return;
                 }
                 var fetchedData = await response.json();
@@ -42,23 +54,18 @@ var LoginViewModel = function () {
             console.error('Something went wrong with fetch!', error);
             throw error;
         }
-    }   
-    
-    self.signUpBtn = function() {
-        window.location.href = "http://127.0.0.1:5500/Register.html";
     }
     
 
     self.activate = function () {
-        var element = $('#login_container')[0];
-        // TO DO: remove cleanNode
+        var element = $('#register_container')[0];
         ko.cleanNode(element);
         ko.applyBindings(self, element);
     };
 }
 
-var loginViewModel;
+var registerViewModel;
 $(document).ready(function () {
-    loginViewModel = new LoginViewModel();
-    loginViewModel.activate();
+    registerViewModel = new RegisterViewModel();
+    registerViewModel.activate();
 });

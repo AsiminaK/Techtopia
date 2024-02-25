@@ -179,11 +179,11 @@ var MainViewModel = function (data) {
 
   self.logoutBtn = function() {
     localStorage.removeItem("data");
-    window.location.href = "http://127.0.0.1:5500/Techtopia/Login.html";
+    window.location.href = "http://127.0.0.1:5500/Login.html";
   }
 
   self.loginBtn = function() {
-    window.location.href = "http://127.0.0.1:5500/Techtopia/Login.html";
+    window.location.href = "http://127.0.0.1:5500/Login.html";
   }
 
   // ==================================== CART BUTTON ====================================
