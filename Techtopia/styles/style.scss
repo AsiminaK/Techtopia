@@ -420,3 +420,14 @@ border: 2px solid #555;
     margin-right: -55px;
     border-left: 0;
 }
+
+.register-btn {
+    background: linear-gradient(90deg, black 0%, rgb(248, 26, 92) 65%);
+    color: white;
+    border: 0;
+}
+
+.register-btn:hover {
+    background: linear-gradient(90deg, rgb(248, 26, 92) 0%, black 65%);
+    color: white;
+}

@@ -179,11 +179,15 @@ var MainViewModel = function (data) {
 
   self.logoutBtn = function() {
     localStorage.removeItem("data");
-    window.location.href = "http://127.0.0.1:5500/Login.html";
+    self.user = new UserViewModel();
   }
 
   self.loginBtn = function() {
     window.location.href = "http://127.0.0.1:5500/Login.html";
+  }
+
+  self.registerBtn = function() {
+    window.location.href = "http://127.0.0.1:5500/Register.html"
   }
 
   // ==================================== CART BUTTON ====================================
