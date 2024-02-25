@@ -428,4 +428,18 @@ td {
 
 .myCart {
   border-bottom: 1px dotted rgb(223, 15, 77);
+}
+
+.order-selector {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  border-bottom: 1px solid rgb(223, 15, 77);
+  color: rgb(223, 15, 77);
+}
+
+.order-selector:hover {
+  color: black;
 }/*# sourceMappingURL=style.css.map */
