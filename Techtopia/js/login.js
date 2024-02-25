@@ -8,14 +8,14 @@ var LoginViewModel = function () {
     var self = this;
     self.user = new UserViewModel();
 
-    self.signInBtn = function () {
+    self.signInBtn = async function () {
         var user = {
             username: self.user.username(),
             password: self.user.password()
         };
-
+    
         try {
-            fetch('http://localhost:3000/login', {
+            await fetch('http://localhost:3000/login', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -23,11 +23,15 @@ var LoginViewModel = function () {
                 },
                 body: JSON.stringify(user)
             })
-            .then(function(response) {
+            .then(async function(response) {
                 if (!response.ok) {
                     alert('Incorrect Username and/or Password');
                     return;
                 }
+                var fetchedData = await response.json();
+                console.log(fetchedData);
+                
+                localStorage.setItem("data", JSON.stringify(fetchedData));
                 window.location.href = "http://127.0.0.1:5500/Techtopia/Index.html";
             })
             .catch(function(error) {
@@ -38,7 +42,7 @@ var LoginViewModel = function () {
             console.error('Something went wrong with fetch!', error);
             throw error;
         }
-    }
+    }    
     
 
     self.activate = function () {

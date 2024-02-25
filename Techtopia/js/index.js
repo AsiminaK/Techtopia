@@ -4,8 +4,8 @@ return myPrice ? myPrice.toFixed(2) + "€" : "0.00€";
 
 var UserViewModel = function () {
     var self = this;
-    self.username = ko.observable();
-    self.password = ko.observable();
+    self.Username = ko.observable(null);
+    self.Orders = ko.observableArray(null);
 }
 
 var Product = function(name, price, image) {
@@ -25,7 +25,6 @@ var SavedProduct = function(product , onProductDeleting) {
       var finalPrice = (self.productQuantity() * self.product.price);
       return finalPrice;
     });
-  
   
     // ==================================== CHANGE THE QUANTITY VALUE ===================================
     self.subtractQuantity = function () {
@@ -75,7 +74,12 @@ var MainViewModel = function (data) {
     self.savedProducts = ko.observableArray([]);
     self.searchBar = ko.observable("");
     self.existingProduct = ko.observable(false);
-  
+
+    self.dataReceived = JSON.parse(localStorage.getItem("data"));
+    console.log(self.dataReceived);
+    self.user.Username(self.dataReceived.username);
+    self.user.Orders(self.dataReceived.orders);
+    
     self.Categories = ko.computed(function () {
         var retVal = [];
         
@@ -163,11 +167,28 @@ var MainViewModel = function (data) {
     return total;
   });
 
-  // ==================================== CART BUTTON ====================================
+  // ==================================== USER PANEL ====================================
+  self.displayUserSidePanel = ko.observable(false);
   self.displaySidePanel = ko.observable(false);
+
+  self.displayUserDataBtn = function () {
+    self.displayUserSidePanel(!self.displayUserSidePanel());
+    if (self.displayUserSidePanel()) {
+      self.displaySidePanel(false);
+    }
+  };
+
+  self.logoutBtn = function() {
+    localStorage.removeItem("data");
+    window.location.href = "http://127.0.0.1:5500/Techtopia/Login.html";
+  }
+
+  // ==================================== CART BUTTON ====================================
   self.displaySavedProductsBtn = function () {
-    //debugger;
     self.displaySidePanel(!self.displaySidePanel());
+    if (self.displaySidePanel()) {
+      self.displayUserSidePanel(false);
+    }
   };
 
   self.emptyCart = ko.computed(function () {
