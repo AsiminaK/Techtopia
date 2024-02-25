@@ -6,6 +6,7 @@ const ordersData = require('../data/orders.json');
 const usersData = require('../data/users.json');
 
 const fs = require('fs');
+const uuid = require('uuid');
 
 // Define a GET route for /example
 router.get('/data', (req, res) => {
@@ -40,6 +41,10 @@ router.post('/login', (req, res) => {
 
 router.post('/register', (req, res) => {
   const newUser = req.body;
+
+  const userId = 'u-' + uuid.v4();
+  newUser.userId = userId;
+
   console.log(newUser);
   usersData.users.push(newUser);
 

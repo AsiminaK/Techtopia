@@ -31,6 +31,7 @@
       "zip": "12345"
     },
     {
+      "userId": "u-000002",
       "username": "maraggelaki",
       "password": "123",
       "firstname": "Maria",
@@ -39,6 +40,17 @@
       "address": "Aigialeias 34",
       "city": "Athens",
       "zip": "16233"
+    },
+    {
+      "username": "anti123",
+      "password": "123",
+      "firstname": "Maria",
+      "lastname": "Antouaneta",
+      "email": "anti@gmail.com",
+      "address": "Aigialeias 34",
+      "city": "Athens",
+      "zip": "16233",
+      "userId": "u-aa386b8f-a802-4107-9ef9-ed4469b696ef"
     }
   ]
 }
