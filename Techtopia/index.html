@@ -87,7 +87,8 @@
             </div>
             <!-- ================================ USER SIDE PANEL ============================================ -->
             <div class="sidePanelCart sidePanelCart-start" style="border: 3px solid #f81a5c;" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" data-bind="css: { 'open': displayUserSidePanel() }, with: user">
-                <div class="col-xs-12 pn" data-bind="visible: Username() !== null || Username !== ''">
+                <!-- ko if: Username()-->
+                <div class="col-xs-12 pn" data-bind="">
                     <div class="col-xs-12 mt-1 text-center" >
                         <span style="font-size: large; font-weight: 600;" >
                             <i class="fa fa-user-o" ></i>
@@ -106,6 +107,17 @@
                         </button>
                     </div>
                 </div>
+                <!-- /ko -->
+                <!-- ko if: !Username()-->
+                <div class="col-xs-12 mt-1" >
+                    <button class="btn product-btn" style="width: 100%; padding: 5px; width: 170px;" data-bind="click: $root.loginBtn">
+                        <span style="font-weight: 700;">
+                            <i class="fa fa-sign-in" aria-hidden="true"></i>
+                            <span>  LogIn  </span>
+                        </span>
+                    </button>
+                </div>
+                <!-- /ko -->
             </div>
         </div>
     </nav>

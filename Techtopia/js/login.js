@@ -42,7 +42,11 @@ var LoginViewModel = function () {
             console.error('Something went wrong with fetch!', error);
             throw error;
         }
-    }    
+    }   
+    
+    self.signUpBtn = function() {
+        window.location.href = "http://127.0.0.1:5500/Techtopia/Register.html";
+    }
     
 
     self.activate = function () {

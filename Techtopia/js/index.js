@@ -76,9 +76,8 @@ var MainViewModel = function (data) {
     self.existingProduct = ko.observable(false);
 
     self.dataReceived = JSON.parse(localStorage.getItem("data"));
-    console.log(self.dataReceived);
-    self.user.Username(self.dataReceived.username);
-    self.user.Orders(self.dataReceived.orders);
+    self.user.Username(self.dataReceived?.username);
+    self.user.Orders(self.dataReceived?.orders);
     
     self.Categories = ko.computed(function () {
         var retVal = [];
@@ -180,6 +179,10 @@ var MainViewModel = function (data) {
 
   self.logoutBtn = function() {
     localStorage.removeItem("data");
+    window.location.href = "http://127.0.0.1:5500/Techtopia/Login.html";
+  }
+
+  self.loginBtn = function() {
     window.location.href = "http://127.0.0.1:5500/Techtopia/Login.html";
   }
 
