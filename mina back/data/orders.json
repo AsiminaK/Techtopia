@@ -1,0 +1,28 @@
+{
+    "orders": [
+        {
+            "orderId": "o-000001",
+            "userId": "u-000001",
+            "products": [
+                {
+                    "productId": "p-000001"
+                },
+                {
+                    "productId": "p-000002"
+                }
+            ]
+        },
+        {
+            "orderId": "o-000002",
+            "userId": "u-000001",
+            "products": [
+                {
+                    "productId": "p-000003"
+                },
+                {
+                    "productId": "p-000002"
+                }
+            ]
+        }
+    ]
+}   

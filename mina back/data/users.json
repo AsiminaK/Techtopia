@@ -1,0 +1,34 @@
+{
+    "users": [
+        {
+            "userId": "u-000001",
+            "username": "Mina01",
+            "email": "mina@gmail.com",
+            "password": "kodikos123",
+            "firstName": "Mina",
+            "lastName": "Karazioga",
+            "address": "Aigialeias 34",
+            "city": "Athens",
+            "zip": "16233",
+            "orders": [
+                {
+                    "orderId": "o-000001" 
+                },
+                {
+                    "orderId": "o-000002"
+                }
+            ]
+        },
+        {
+            "userId": "u-000002",
+            "username": "Achilles", 
+            "email": "achilles@gmail.com",
+            "password": "password123",
+            "firstName": "Achilles",
+            "lastName": "Kastanas",
+            "address": "Lomvardou 66",
+            "city": "Athens",
+            "zip": "12345"
+        }
+    ]
+}
