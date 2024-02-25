@@ -52,7 +52,7 @@
             <a class="cartImgBtn position-absolute end-0 bg-transparent border-0 px-5" data-bs-toggle="offcanvas" role="button" aria-controls="offcanvasExample" data-bind="click: displaySavedProductsBtn"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
             <a class="userImgBtn position-absolute end-0 bg-transparent border-0 px-3" data-bs-toggle="offcanvas" role="button" aria-controls="offcanvasExample" data-bind="click: displayUserDataBtn"><i class="fa fa-user-o" aria-hidden="true"></i></a>
             <!-- ================================ SHOPPING CART ============================================ -->
-              <div class="sidePanelCart sidePanelCart-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" data-bind="css: { 'open': displaySidePanel() }">
+              <div class="sidePanelCart sidePanelCart-start" style="border: 3px solid black;" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" data-bind="css: { 'open': displaySidePanel() }">
                 <div data-bind="visible: emptyCart" class="emptyCartImg w-25"><img class="w-25 " src="./styles/images/empty-cart.svg" alt="EMPTY CART"></div>
                 <div class="displayMyCart" data-bind="visible: !emptyCart()">
                     <div class="row">
@@ -62,18 +62,18 @@
                                     <tr>
                                         <th>Product</th>
                                         <th>Price</th>
-                                        <th>Quantity</th>
+                                        <th class="text-center" >Quantity</th>
                                         <th>Subtotal</th>
                                     </tr>
                                 </thead>
                                 <tbody data-bind="foreach: savedProducts">
                                     <tr class="savedProduct">
-                                        <td class="productName" data-bind="text: product.name"></td>
+                                        <td style="padding-left: 0;" class="productName" data-bind="text: product.name"></td>
                                         <td class="productPrice" data-bind="text: formatPrice(product.price)"></td>
-                                        <td class="qty-input" data-bind="with: $data">
-                                            <a class="qty-count qty-count--minus btn" data-action="minus" data-bind="click: subtractQuantity"><i class="fa fa-minus" aria-hidden="true"></i> </a>
+                                        <td class="qty-input" style="width: 100%; border: 0;" data-bind="with: $data">
+                                            <a class="qty-count qty-count--minus btn" data-action="minus" style="color: #f81a5c;" data-bind="click: subtractQuantity"><i class="fa fa-minus" aria-hidden="true"></i> </a>
                                             <input class="product-qty form-control bg-white" type="number" name="product-qty" min="0" max="100" value="1" data-bind="value: productQuantity, disable: disableInputQuantity">
-                                            <a class="qty-count qty-count--add btn" data-action="add" data-bind="click: addQuantity"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                            <a class="qty-count qty-count--add btn" data-action="add" style="color: #f81a5c;" data-bind="click: addQuantity"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                         </td>
                                         <td class="subtotal" data-bind="text: formatPrice(SubtotalPrice())"></td>
                                         <td class="delete"><a href="#" data-bind="click: $root.deleteProduct"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
@@ -83,7 +83,20 @@
                         </div>
                     </div>
                 </div>
-                <p class="totalPrice"> Total Price: <span data-bind="text: formatPrice(totalPrice())"></span></p>
+                <div class="col-xs-12 pln text-right" style="text-align: center; padding-right: 10px;" data-bind="visible: !emptyCart()">
+                    <span class="totalPrice"> Total Price:</span>
+                </div>
+                <div class="col-xs-12 pln" style="text-align: center; padding-right: 10px; border-bottom: 1px dotted rgb(248, 26, 92);" data-bind="visible: !emptyCart()">
+                    <b data-bind="text: formatPrice(totalPrice())"></b>
+                </div>
+                <div class="col-xs-12 mt-1" >
+                    <button class="btn register-btn" style="width: 100%; padding: 10px; width: 100%;" data-bind="click: $root.registerBtn, visible: !emptyCart()">
+                        <span style="font-weight: 700;">
+                            <i class="fa fa-credit-card" aria-hidden="true"></i>
+                            <span>  Proceed to Payment  </span>
+                        </span>
+                    </button>
+                </div>
             </div>
             <!-- ================================ USER SIDE PANEL ============================================ -->
             <div class="sidePanelCart sidePanelCart-start" style="border: 3px solid #f81a5c;" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel" data-bind="css: { 'open': displayUserSidePanel() }, with: user">
