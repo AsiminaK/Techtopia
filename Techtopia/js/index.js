@@ -4,6 +4,7 @@ return myPrice ? myPrice.toFixed(2) + "€" : "0.00€";
 
 var UserViewModel = function () {
     var self = this;
+    self.UserId = ko.observable();
     self.Username = ko.observable(null);
     self.Orders = ko.observableArray(null);
 }
@@ -68,7 +69,8 @@ var MainViewModel = function (data) {
     var self = this;
     self.isActive = ko.observable(false);
     self.user = new UserViewModel();
-    self.productData = data;
+    self.productData = data.products;
+    self.ordersData = data.orders;
     self.selectedCategory = ko.observable('All Products');
 
     self.savedProducts = ko.observableArray([]);
@@ -76,9 +78,13 @@ var MainViewModel = function (data) {
     self.existingProduct = ko.observable(false);
 
     self.dataReceived = JSON.parse(localStorage.getItem("data"));
+    self.user.UserId(self.dataReceived?.userId);
     self.user.Username(self.dataReceived?.username);
     self.user.Orders(self.dataReceived?.orders);
-    
+
+    self.ordersVisible = ko.observable(false);
+    self.orderDetails = ko.observable();
+
     self.Categories = ko.computed(function () {
         var retVal = [];
         
@@ -190,6 +196,20 @@ var MainViewModel = function (data) {
     window.location.href = "http://127.0.0.1:5500/Register.html"
   }
 
+  self.showMyOrders = function() {
+    self.ordersVisible(!self.ordersVisible());
+  }
+
+  self.orderDetailsBtn = function(orderId) {
+    var myOrders = self.ordersData.orders.filter(order => order.userId === self.user.UserId());
+
+    var myOrder = myOrders.find(function(order) {
+      return order.orderId === orderId;
+    });
+    
+    self.orderDetails(myOrder ? myOrder : null)
+  }
+
   // ==================================== CART BUTTON ====================================
   self.displaySavedProductsBtn = function () {
     self.displaySidePanel(!self.displaySidePanel());
@@ -206,6 +226,10 @@ var MainViewModel = function (data) {
       return false;
     }
   });
+
+  self.saveOrderBtn = function() {
+    
+  }
 
   // Observable to track the state of the off-canvas panel
   self.isOffcanvasOpen = ko.observable(false);

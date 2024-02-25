@@ -2,13 +2,17 @@ const express = require('express');
 const router = express.Router();
 
 const products = require('../data/products.json');
+const ordersData = require('../data/orders.json');
 const usersData = require('../data/users.json');
 
 const fs = require('fs');
 
 // Define a GET route for /example
 router.get('/data', (req, res) => {
-  res.json(products);
+  res.json({
+    products: products,
+    orders: ordersData
+  });
 });
 
 router.post('/login', (req, res) => {
@@ -19,6 +23,7 @@ router.post('/login', (req, res) => {
   
   if (userFound) {
     res.json({
+      userId: userFound.userId,
       username: userFound.username,
       orders: userFound.orders
     });

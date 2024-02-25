@@ -90,7 +90,7 @@
                     <b data-bind="text: formatPrice(totalPrice())"></b>
                 </div>
                 <div class="col-xs-12 mt-1" >
-                    <button class="btn register-btn" style="width: 100%; padding: 10px; width: 100%;" data-bind="click: $root.registerBtn, visible: !emptyCart()">
+                    <button class="btn register-btn" style="width: 100%; padding: 10px; width: 100%;" data-bind="click: $root.saveOrderBtn, visible: !emptyCart()">
                         <span style="font-weight: 700;">
                             <i class="fa fa-credit-card" aria-hidden="true"></i>
                             <span>  Proceed to Payment  </span>
@@ -110,18 +110,25 @@
                     </div>
                     <div class="col-xs-12 mt-1" >
                         <div class="col-xs-12 pn">
-                            <button class="main-btn" style="border-radius: 8px; width: 100%;">My Orders</button>
+                            <button class="main-btn" style="border-radius: 8px; width: 100%;" data-bind="click: $root.showMyOrders">My Orders</button>
                         </div>
-                        <div class="col-xs-12 pn" data-bind="foreach: Orders">
-                            <a class="col-xs-12 order-selector">
+                        <div class="col-xs-12 pn" data-bind="foreach: Orders, visible: $root.ordersVisible()">
+                            <a class="col-xs-12 order-selector" data-bind="click: () => $root.orderDetailsBtn(orderId)">
                                 <div>
                                     <i class="fa fa-shopping-bag" ></i>
                                     <span data-bind="text: orderId"></span>
                                 </div>
                                <div style="text-align: end;">
-                                    <i class="fa fa-arrow-up"></i>
+                                    <i class="fa fa-arrow-up" data-bind="visible: !$root.orderDetails()"></i>
+                                    <i class="fa fa-arrow-down" data-bind="visible: $root.orderDetails()"></i>
                                </div>
                             </a>
+                            <!-- ko if: $root.orderDetails() && $root.orderDetails().orderId === orderId -->
+                            <div class="col-xs-12" data-bind="with: $root.orderDetails">
+                                <span data-bind="text: orderDate" ></span>
+                                <span data-bind="text: pricePaid" ></span>
+                            </div>
+                            <!-- /ko -->
                         </div>
                     </div>
                     <div class="col-xs-12 mt-1" >
