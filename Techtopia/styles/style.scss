@@ -193,12 +193,18 @@ h3,h5{
     font-size: 0.9rem;
     
     ul {
+    .no-bullets {
+        list-style-type: none; /* Remove bullets */
+        padding: 0; /* Remove padding */
+        margin: 0;
+    }
         li {
             margin-bottom: 0.7rem;
             
             a {
+                text-decoration: none;
                 &:hover {
-                    text-decoration: underline;
+                    text-decoration: none;
                 }
             }
         }

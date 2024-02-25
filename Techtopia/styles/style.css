@@ -184,11 +184,19 @@ h3, h5 {
   padding-top: 5rem;
   font-size: 0.9rem;
 }
+.footer ul .no-bullets {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0;
+}
 .footer ul li {
   margin-bottom: 0.7rem;
 }
+.footer ul li a {
+  text-decoration: none;
+}
 .footer ul li a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .footer__container {
