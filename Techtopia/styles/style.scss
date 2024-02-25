@@ -431,3 +431,11 @@ border: 2px solid #555;
     background: linear-gradient(90deg, rgb(248, 26, 92) 0%, black 65%);
     color: white;
 }
+
+td {
+    border-color: #E0E0E0;
+    border-style: solid;
+    /* border-width: 0; */
+    /* border-width: 1px; */
+    padding: 5px;
+}

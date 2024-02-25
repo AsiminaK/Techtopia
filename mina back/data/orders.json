@@ -5,13 +5,16 @@
             "userId": "u-000001",
             "products": [
                 {
-                    "productId": "p-000001"
+                    "productId": "p-000001",
+                    "quantity": 3
                 },
                 {
-                    "productId": "p-000002"
+                    "productId": "p-000002",
+                    "quantity": 1
                 }
             ],
-            "orderDate": "3/12/2023"
+            "orderDate": "3/12/2023",
+            "pricePaid": 1898
         },
         {
             "orderId": "o-000002",
@@ -24,7 +27,8 @@
                     "productId": "p-000002"
                 }
             ],
-            "orderDate": "1/10/2023"
+            "orderDate": "1/10/2023",
+            "pricePaid": 1598
         }
     ]
 }   
