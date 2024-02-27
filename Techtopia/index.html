@@ -22,7 +22,7 @@
     <nav class="navbar navbar-expand-sm bg-white shadow fixed-top">
         <div class="container">
           <a class="navbar-brand" href="#header">
-            <img class="logo_img" style="width: 20%;" src="./styles/images/TechTopia.png" alt="TechTopia Image">
+            <img class="logo_img" style="width: 150px;" src="./styles/images/TechTopia.png" alt="TechTopia Image">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -119,8 +119,8 @@
                                     <span data-bind="text: orderId"></span>
                                 </div>
                                <div style="text-align: end;">
-                                    <i class="fa fa-arrow-up" data-bind="visible: !$root.orderDetails()"></i>
-                                    <i class="fa fa-arrow-down" data-bind="visible: $root.orderDetails()"></i>
+                                    <i class="fa fa-arrow-up" data-bind="visible: !$root.orderDetails() || $root.orderDetails().orderId !== orderId"></i>
+                                    <i class="fa fa-arrow-down" data-bind="visible: $root.orderDetails() && $root.orderDetails().orderId === orderId"></i>
                                </div>
                             </a>
                             <!-- ko if: $root.orderDetails() && $root.orderDetails().orderId === orderId -->
@@ -132,7 +132,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 mt-1" >
-                        <button class="btn product-btn" style="width: 100%; padding: 5px; width: 170px;" data-bind="click: $root.logoutBtn">
+                        <button class="btn product-btn" style="width: 100%; padding: 5px; min-width: 170px;" data-bind="click: $root.logoutBtn">
                             <span style="font-weight: 700;">
                                 <i class="fa fa-power-off" aria-hidden="true"></i>
                                 Log Out
@@ -386,7 +386,8 @@
     </footer>
 
     <script src="./js/index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
   </body>
 </html>

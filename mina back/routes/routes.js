@@ -16,6 +16,52 @@ router.get('/data', (req, res) => {
   });
 });
 
+router.post('/submitOrder', (req, res) => {
+  const order = req.body;
+
+  const orderId = 'o-' + uuid.v4();
+  order.orderId = orderId;
+
+  console.log(order);
+  ordersData.orders.push(order);
+
+  // Find the user who placed the order
+  const userIndex = usersData.users.findIndex(user => user.userId === order.userId);
+  if (userIndex !== -1) {
+    // Update the user's orders array
+    usersData.users[userIndex].orders.push({ orderId });
+  } else {
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  fs.writeFile('./data/orders.json', JSON.stringify(ordersData, null, 2), (err) => {
+    if (err) {
+      console.error('Error writing to orders.json:', err);
+      return res.status(500).json({
+        message: 'Error submitting order',
+        error: err
+      });
+    } else {
+      console.log('Order submitted successfully');
+      fs.writeFile('./data/users.json', JSON.stringify(usersData, null, 2), (err) => {
+        if (err) {
+          console.error('Error writing to users.json:', err);
+          return res.status(500).json({
+            message: 'Error updating user data',
+            error: err
+          });
+        }
+        console.log('User data updated successfully');
+        res.json({
+          newOrder: order
+        });
+      });
+    }
+  });
+});
+
+
+
 router.post('/login', (req, res) => {
   console.log(req.body);
   reqData = req.body;

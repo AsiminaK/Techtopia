@@ -9,8 +9,9 @@ var UserViewModel = function () {
     self.Orders = ko.observableArray(null);
 }
 
-var Product = function(name, price, image) {
+var Product = function(id, name, price, image) {
     var self = this;
+    self.id = id;
     self.name = name;
     self.price = price;
     self.image = image;
@@ -121,7 +122,7 @@ var MainViewModel = function (data) {
                 searching === "" ||
                 productData.name.toLowerCase().includes(searching)
               ) {
-                var product = new Product(productData.name, productData.price, productData.image);
+                var product = new Product(productData.productId, productData.name, productData.price, productData.image);
                 product.imageText = "Alt text";
                 product.category = category.name;
                 retVal.push(product);
@@ -227,9 +228,47 @@ var MainViewModel = function (data) {
     }
   });
 
-  self.saveOrderBtn = function() {
+  self.saveOrderBtn = async function () {
+    var filteredArray = ko.toJS(self.savedProducts()).map(item => ({
+      productId: item.product.id,
+      productQuantity: item.productQuantity
+    }));
+
+    var order = {
+        userId: self.user.UserId(),
+        products: filteredArray,
+        orderDate: moment().format('M/D/YYYY'),
+        pricePaid: self.totalPrice(),
+    };
     
+    try {
+        await fetch('http://localhost:3000/submitOrder', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(order)
+        })
+        .then(async function(response) {
+            if (!response.ok) {
+                alert('Registration Failed');
+                return;
+            }
+            var fetchedData = await response.json();
+            console.log(fetchedData);
+            
+        })
+        .catch(function(error) {
+            console.error('Something went wrong with fetch!', error);
+            throw error;
+        });
+    } catch (error) {
+        console.error('Something went wrong with fetch!', error);
+        throw error;
+    }
   }
+
 
   // Observable to track the state of the off-canvas panel
   self.isOffcanvasOpen = ko.observable(false);
