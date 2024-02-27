@@ -252,9 +252,10 @@ var MainViewModel = function (data) {
         })
         .then(async function(response) {
             if (!response.ok) {
-                alert('Registration Failed');
+                alert('Order Failed');
                 return;
             }
+            alert('Order submitted succesfully!');
             var fetchedData = await response.json();
             console.log(fetchedData);
             
