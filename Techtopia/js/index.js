@@ -4,7 +4,7 @@ return myPrice ? myPrice.toFixed(2) + "€" : "0.00€";
 
 var UserViewModel = function () {
     var self = this;
-    self.UserId = ko.observable();
+    self.UserId = ko.observable(null);
     self.Username = ko.observable(null);
     self.Orders = ko.observableArray(null);
 }
@@ -201,6 +201,16 @@ var MainViewModel = function (data) {
     self.ordersVisible(!self.ordersVisible());
   }
 
+  self.getOrderName = function(orderId) {
+    var order = self.ordersData.orders.find(o => o.orderId == orderId);
+    if (order) {
+      return order.orderDate;
+    }
+    else {
+      return ''
+    }
+  }
+
   self.orderDetailsBtn = function(orderId) {
     var myOrders = self.ordersData.orders.filter(order => order.userId === self.user.UserId());
 
@@ -210,6 +220,17 @@ var MainViewModel = function (data) {
     
     self.orderDetails(myOrder ? myOrder : null)
   }
+
+  self.getProductName = function(productId) {
+    for (let category of self.productData.categories) {
+      let product = category.products.find(p => p.productId === productId);
+      if (product) {
+        return product.name;
+      }
+    }
+    return '';
+  }
+  
 
   // ==================================== CART BUTTON ====================================
   self.displaySavedProductsBtn = function () {

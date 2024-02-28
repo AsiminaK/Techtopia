@@ -116,7 +116,7 @@
                             <a class="col-xs-12 order-selector" data-bind="click: () => $root.orderDetailsBtn(orderId)">
                                 <div>
                                     <i class="fa fa-shopping-bag" ></i>
-                                    <span data-bind="text: orderId"></span>
+                                    <span data-bind="text: $root.getOrderName(orderId)"></span>
                                 </div>
                                <div style="text-align: end;">
                                     <i class="fa fa-arrow-up" data-bind="visible: !$root.orderDetails() || $root.orderDetails().orderId !== orderId"></i>
@@ -125,8 +125,13 @@
                             </a>
                             <!-- ko if: $root.orderDetails() && $root.orderDetails().orderId === orderId -->
                             <div class="col-xs-12" data-bind="with: $root.orderDetails">
-                                <span data-bind="text: orderDate" ></span>
-                                <span data-bind="text: pricePaid" ></span>
+                                <div class="col-xs-12" data-bind="foreach: products">
+                                    <div class="col-xs-12">
+                                        <span data-bind="text: $root.getProductName(productId)" ></span>
+                                        <span class="text-right" style="color: #f81a5c;" data-bind="text: quantity" ></span>
+                                    </div>
+                                </div>
+                                <h4 class="text-center" data-bind="text: pricePaid" ></h4>
                             </div>
                             <!-- /ko -->
                         </div>

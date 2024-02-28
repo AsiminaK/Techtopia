@@ -21,10 +21,12 @@
       "userId": "u-000001",
       "products": [
         {
-          "productId": "p-000003"
+          "productId": "p-000003",
+          "quantity": 3
         },
         {
-          "productId": "p-000002"
+          "productId": "p-000002",
+          "quantity": 3
         }
       ],
       "orderDate": "1/10/2023",
