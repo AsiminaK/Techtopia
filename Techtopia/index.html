@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4abb56021f.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>TechTopia</title>
   </head>
   <body id="main_container">
@@ -90,7 +90,7 @@
                     <b data-bind="text: formatPrice(totalPrice())"></b>
                 </div>
                 <div class="col-xs-12 mt-1" >
-                    <button class="btn register-btn" style="width: 100%; padding: 10px; width: 100%;" data-bind="click: $root.saveOrderBtn, visible: !emptyCart()">
+                    <button id="openModalBtn" class="btn register-btn" style="width: 100%; padding: 10px; width: 100%;" data-toggle="modal" data-target="#myModal" data-bind="click:openPaymentModal, visible: !emptyCart()">
                         <span style="font-weight: 700;">
                             <i class="fa fa-credit-card" aria-hidden="true"></i>
                             <span>  Proceed to Payment  </span>
@@ -127,11 +127,11 @@
                             <div class="col-xs-12" data-bind="with: $root.orderDetails">
                                 <div class="col-xs-12" data-bind="foreach: products">
                                     <div class="col-xs-12">
+                                        <span class="text-right" style="color: #f81a5c;" data-bind="text: productQuantity" ></span>
                                         <span data-bind="text: $root.getProductName(productId)" ></span>
-                                        <span class="text-right" style="color: #f81a5c;" data-bind="text: quantity" ></span>
                                     </div>
                                 </div>
-                                <h4 class="text-center" data-bind="text: pricePaid" ></h4>
+                                <h6 class="text-center" style="padding: 10px; border-top: 1px dotted;" data-bind="text: formatPrice(pricePaid)" ></h6>
                             </div>
                             <!-- /ko -->
                         </div>

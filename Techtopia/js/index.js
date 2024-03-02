@@ -190,7 +190,7 @@ var MainViewModel = function (data) {
   }
 
   self.loginBtn = function() {
-    window.location.href = "http://127.0.0.1:5500/Login.html";
+    window.location.href = "http://127.0.0.1:5501/Index.html";
   }
 
   self.registerBtn = function() {
@@ -290,6 +290,10 @@ var MainViewModel = function (data) {
         throw error;
     }
   }
+
+  self.openPaymentModal = function() {
+    $('#myModal').modal('show');
+  };
 
 
   // Observable to track the state of the off-canvas panel
