@@ -70,7 +70,7 @@ var MainViewModel = function (data) {
     var self = this;
     self.isActive = ko.observable(false);
     self.user = new UserViewModel();
-    self.productData = data.products;
+    self.categoryData = data.categories;
     self.ordersData = data.orders;
     self.selectedCategory = ko.observable('All Products');
 
@@ -93,7 +93,9 @@ var MainViewModel = function (data) {
             retVal.push('All Products');
         }
 
-        self.productData.categories.forEach(category => {
+        console.log( 'skata proddata', self.categoryData );
+
+        self.categoryData.forEach(category => {
             retVal.push(category.name);
         });
 
@@ -114,7 +116,7 @@ var MainViewModel = function (data) {
         var searching = self.searchBar().toLowerCase();
 
         var retVal = [];
-        self.productData.categories.forEach((category) => {
+        self.categoryData.forEach((category) => {
           if (selectedCategory === undefined || selectedCategory === category.name || selectedCategory === "All Products") {
             category.products.forEach(function (productData) {
               self.existingProduct(false);
@@ -129,7 +131,7 @@ var MainViewModel = function (data) {
                 self.existingProduct(false);
               }
               else if (searching !== "" &&
-              productData.name.toLowerCase().includes(searching) === false) {
+                productData.name.toLowerCase().includes(searching) === false) {
                 self.existingProduct(true);
               }
             });
@@ -194,7 +196,7 @@ var MainViewModel = function (data) {
   }
 
   self.registerBtn = function() {
-    window.location.href = "http://127.0.0.1:5500/Register.html"
+    window.location.href = "http://127.0.0.1:5501/Register.html"
   }
 
   self.showMyOrders = function() {
@@ -202,7 +204,11 @@ var MainViewModel = function (data) {
   }
 
   self.getOrderName = function(orderId) {
-    var order = self.ordersData.orders.find(o => o.orderId == orderId);
+    var order = self.ordersData.find(order => order.orderId == orderId);
+
+    console.warn( 'skata self.ordersData', self.ordersData );
+    console.warn( 'skata orderId', orderId );
+    console.warn( 'skata', order );
     if (order) {
       return order.orderDate;
     }
@@ -212,7 +218,7 @@ var MainViewModel = function (data) {
   }
 
   self.orderDetailsBtn = function(orderId) {
-    var myOrders = self.ordersData.orders.filter(order => order.userId === self.user.UserId());
+    var myOrders = self.ordersData.filter(order => order.userId === self.user.UserId());
 
     var myOrder = myOrders.find(function(order) {
       return order.orderId === orderId;
@@ -222,7 +228,7 @@ var MainViewModel = function (data) {
   }
 
   self.getProductName = function(productId) {
-    for (let category of self.productData.categories) {
+    for (let category of self.categoryData) {
       let product = category.products.find(p => p.productId === productId);
       if (product) {
         return product.name;

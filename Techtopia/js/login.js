@@ -32,7 +32,7 @@ var LoginViewModel = function () {
                 console.log(fetchedData);
                 
                 localStorage.setItem("data", JSON.stringify(fetchedData));
-                window.location.href = "http://127.0.0.1:5500/Index.html";
+                window.location.href = "http://127.0.0.1:5501/Index.html";
             })
             .catch(function(error) {
                 console.error('Something went wrong with fetch!', error);
@@ -45,7 +45,7 @@ var LoginViewModel = function () {
     }   
     
     self.signUpBtn = function() {
-        window.location.href = "http://127.0.0.1:5500/Register.html";
+        window.location.href = "http://127.0.0.1:5501/Register.html";
     }
     
 

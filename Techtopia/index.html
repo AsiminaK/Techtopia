@@ -90,7 +90,7 @@
                     <b data-bind="text: formatPrice(totalPrice())"></b>
                 </div>
                 <div class="col-xs-12 mt-1" >
-                    <button id="openModalBtn" class="btn register-btn" style="width: 100%; padding: 10px; width: 100%;" data-toggle="modal" data-target="#myModal" data-bind="click:openPaymentModal, visible: !emptyCart()">
+                    <button id="openModalBtn" class="btn register-btn" style="width: 100%; padding: 10px; width: 100%;" data-toggle="modal" data-target="#myModal" data-bind="click:saveOrderBtn, visible: !emptyCart()">
                         <span style="font-weight: 700;">
                             <i class="fa fa-credit-card" aria-hidden="true"></i>
                             <span>  Proceed to Payment  </span>
