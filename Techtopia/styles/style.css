@@ -464,4 +464,11 @@ td {
 
 .order-selector:hover {
   color: black;
+}
+
+.modal-header {
+  background: linear-gradient(90deg, black 0%, rgb(248, 26, 92));
+}
+.modal-header h5 {
+  color: white;
 }/*# sourceMappingURL=style.css.map */

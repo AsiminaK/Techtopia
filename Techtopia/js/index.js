@@ -65,7 +65,14 @@ var SavedProduct = function(product , onProductDeleting) {
       }
     }
   }
-  
+
+var PaymentViewModel = function () {
+  var self = this;
+  self.cardNumber = ko.observable('');
+  self.cardName = ko.observable('');
+  self.expDate = ko.observable('');
+  self.cvv = ko.observable('');
+}
   
 var MainViewModel = function (data) {
     var self = this;
@@ -86,6 +93,8 @@ var MainViewModel = function (data) {
 
     self.ordersVisible = ko.observable(false);
     self.orderDetails = ko.observable();
+
+    self.payment = new PaymentViewModel();
 
     self.Categories = ko.computed(function () {
         var retVal = [];
@@ -253,55 +262,66 @@ var MainViewModel = function (data) {
     }
   });
 
+  self.paymentSuccess = ko.observable(true);
   self.saveOrderBtn = async function () {
-    var filteredArray = ko.toJS(self.savedProducts()).map(item => ({
-      productId: item.product.id,
-      productQuantity: item.productQuantity
-    }));
-
-    var order = {
-        userId: self.user().UserId(),
-        products: filteredArray,
-        orderDate: moment().format('M/D/YYYY'),
-        pricePaid: self.totalPrice(),
-    };
-    
-    try {
-        await fetch('http://localhost:3000/submitOrder', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(order)
-        })
-        .then(async function(response) {
-            if (!response.ok) {
-                alert('Order Failed');
-                return;
-            }
-            alert('Order submitted succesfully!');
-            var fetchedData = await response.json();
-            console.log(fetchedData);
-            self.user().Orders.push(fetchData);
-            self.ordersData.push(fetchData);
-            self.savedProducts([]);
-            self.displaySidePanel(false);
-        })
-        .catch(function(error) {
-            console.error('Something went wrong with fetch!', error);
-            throw error;
-        });
-    } catch (error) {
-        console.error('Something went wrong with fetch!', error);
-        throw error;
+    if (self.payment.cardName() == '' || self.payment.cardNumber() == '' || self.payment.expDate == '' || self.payment.cvv() == '') {
+      self.paymentSuccess(false);
     }
+    else {
+      self.paymentSuccess(true);
+    }
+
+    if (self.paymentSuccess()) {
+      var filteredArray = ko.toJS(self.savedProducts()).map(item => ({
+        productId: item.product.id,
+        productQuantity: item.productQuantity
+      }));
+  
+      var order = {
+          userId: self.user().UserId(),
+          products: filteredArray,
+          orderDate: moment().format('M/D/YYYY'),
+          pricePaid: self.totalPrice(),
+      };
+      
+      try {
+          await fetch('http://localhost:3000/submitOrder', {
+              method: 'POST',
+              headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(order)
+          })
+          .then(async function(response) {
+              if (!response.ok) {
+                  alert('Order Failed');
+                  return;
+              }
+              alert('Order submitted succesfully!');
+              var fetchedData = await response.json();
+              console.log(fetchedData);
+              self.user().Orders.push(fetchData);
+              self.ordersData.push(fetchData);
+              self.savedProducts([]);
+              self.displaySidePanel(false);
+          })
+          .catch(function(error) {
+              console.error('Something went wrong with fetch!', error);
+              throw error;
+          });
+      } catch (error) {
+          console.error('Something went wrong with fetch!', error);
+          throw error;
+      }
+    }
+    
   }
 
-  self.openPaymentModal = function() {
-    $('#myModal').modal('show');
-  };
-
+  self.isPaymentModal = ko.observable(true);
+  self.paymentModalHide = function () {
+    self.isPaymentModal(false);
+  }
 
   // Observable to track the state of the off-canvas panel
   self.isOffcanvasOpen = ko.observable(false);

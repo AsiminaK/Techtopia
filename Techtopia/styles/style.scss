@@ -486,3 +486,10 @@ td {
 .order-selector:hover {
     color: black;
 }
+
+.modal-header {
+    background: linear-gradient(90deg, black 0%, rgb(248, 26, 92));
+    h5 {
+        color: white;
+    }
+}
