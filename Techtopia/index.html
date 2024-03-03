@@ -71,9 +71,9 @@
                                         <td style="padding-left: 0;" class="productName" data-bind="text: product.name"></td>
                                         <td class="productPrice" data-bind="text: formatPrice(product.price)"></td>
                                         <td class="qty-input" style="width: 100%; border: 0;" data-bind="with: $data">
-                                            <a class="qty-count qty-count--minus btn" data-action="minus" style="color: #f81a5c;" data-bind="click: subtractQuantity"><i class="fa fa-minus" aria-hidden="true"></i> </a>
+                                            <a class="qty-count qty-count--minus btn small-cart-btn" data-action="minus" style="color: #f81a5c;" data-bind="click: subtractQuantity"><i class="fa fa-minus" aria-hidden="true"></i> </a>
                                             <input class="product-qty form-control bg-white" type="number" name="product-qty" min="0" max="100" value="1" data-bind="value: productQuantity, disable: disableInputQuantity">
-                                            <a class="qty-count qty-count--add btn" data-action="add" style="color: #f81a5c;" data-bind="click: addQuantity"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                            <a class="qty-count qty-count--add btn small-cart-btn" data-action="add" style="color: #f81a5c;" data-bind="click: addQuantity"><i class="fa fa-plus" aria-hidden="true"></i></a>
                                         </td>
                                         <td class="subtotal" data-bind="text: formatPrice(SubtotalPrice())"></td>
                                         <td class="delete"><a href="#" data-bind="click: $root.deleteProduct"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
@@ -250,16 +250,16 @@
                       <img src="" class="card-img-top" alt="..." data-bind="attr: {src: image, alt: imageText}">
                       <div class="card-body">
                           <h5 class="card-title" data-bind="text: name">TIRAMISU CAKE</h5>
-                          <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
+                          <p class="card-text" data-bind="text: description" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
                               dignissimos accusantium amet similique velit iste.</p>
                       </div>
                       <div class="px-3 mb-4 d-flex justify-content-around">
                           <h3 class="product-price" data-bind="text: formatPrice(price)">190$</h3>
                           <button class="btn product-btn rds" data-bind="click: $root.addToCart.bind($data,$data), hidden: $root.isInCart($data) !=null">Add To Cart <i class="fa-solid fa-cart-shopping"></i></button>
                           <div class="qty-input" data-bind="with: $root.isInCart($data), visible: $root.isInCart($data) != null">
-                            <a class="qty-count qty-count--minus btn" data-action="minus" data-bind="click: subtractQuantity"><i class="fa fa-minus" aria-hidden="true"></i> </a>
+                            <a class="qty-count qty-count--minus btn big-cart-btn" data-action="minus" data-bind="click: subtractQuantity"><i class="fa fa-minus" aria-hidden="true"></i> </a>
                             <input class="product-qty form-control bg-white" type="number" name="product-qty" min="0" max="100" value="1" data-bind="value: productQuantity, disable: disableInputQuantity">
-                            <a class="qty-count qty-count--add btn" data-action="add" data-bind="click: addQuantity"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                            <a class="qty-count qty-count--add btn big-cart-btn" data-action="add" data-bind="click: addQuantity"><i class="fa fa-plus" aria-hidden="true"></i></a>
                           </div>
                       </div>
                   </div>

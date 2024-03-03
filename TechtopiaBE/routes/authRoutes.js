@@ -38,27 +38,26 @@ router.post('/register', fetchUsers, async (req, res) => {
   const userId = 'u-' + uuid.v4();
   newUser.userId = userId;
 
+  const foundUser = await User.findOne({'username': newUser.username});
+
+  // If user found, return 404
+  if (foundUser) {
+    return res.status(404).send('User already exists');
+  }
+
   try {
-    async function saveUser() {
-      try {
-          // Add the new order to the user's orders array
-          const newUserCreated = new User( newUser );
+    // Create a new user instance
+    const newUserInstance = new User(newUser);
 
-          // Save the updated user
-          const savedUser = await newUserCreated.save();
+    // Save the user to the database
+    const savedUser = await newUserInstance.save();
 
-          // Respond with success message
-          res.status(200).send('User registered successfully');
-      } catch (error) {
-          console.error(error);
-      }
-    }
+    // Respond with success message
     res.json({
+      userId: newUser.userId,
       username: newUser.username,
       orders: newUser.orders
     });
-    saveUser();
-
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal Server Error');

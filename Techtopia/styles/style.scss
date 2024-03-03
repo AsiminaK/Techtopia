@@ -297,7 +297,7 @@ h3,h5{
     cursor: pointer;
     width: 2.5rem;
     font-size: 1.25em;
-    text-indent: -100px;
+    /* text-indent: -100px; Remove or adjust this property */
     overflow: hidden;
     position: relative;
 
@@ -315,9 +315,13 @@ h3,h5{
         right: 0;
         margin: auto;
     }
-    
 }
 
+.small-cart-btn {
+    color: black !important;
+    z-index: 5;
+    font-size: 16px;
+}
 
 .cartImgBtn {
     font-size: x-large;
@@ -385,6 +389,11 @@ h3,h5{
     background-color: rgb(248, 26, 92);
     border-radius: 30px;
 
+}
+
+.big-cart-btn {
+    font-size: medium;
+    color: #000;
 }
 
 .form-control[type=text]:focus {

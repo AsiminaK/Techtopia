@@ -9,11 +9,12 @@ var UserViewModel = function () {
     self.Orders = ko.observableArray(null);
 }
 
-var Product = function(id, name, price, image) {
+var Product = function(id, name, price, image, description) {
     var self = this;
     self.id = id;
     self.name = name;
     self.price = price;
+    self.description = description;
     self.image = image;
 }
 
@@ -122,7 +123,7 @@ var MainViewModel = function (data) {
                 searching === "" ||
                 productData.name.toLowerCase().includes(searching)
               ) {
-                var product = new Product(productData.productId, productData.name, productData.price, productData.image);
+                var product = new Product(productData.productId, productData.name, productData.price, productData.image, productData.description);
                 product.imageText = "Alt text";
                 product.category = category.name;
                 retVal.push(product);
@@ -185,8 +186,10 @@ var MainViewModel = function (data) {
   };
 
   self.logoutBtn = function() {
-    localStorage.removeItem("data");
-    self.user( new UserViewModel() );
+    if (window.confirm("Do you really want to logout?")) {
+      localStorage.removeItem("data");
+      self.user( new UserViewModel() );
+    }
   }
 
   self.loginBtn = function() {
@@ -280,7 +283,10 @@ var MainViewModel = function (data) {
             alert('Order submitted succesfully!');
             var fetchedData = await response.json();
             console.log(fetchedData);
-            
+            self.user().Orders.push(fetchData);
+            self.ordersData.push(fetchData);
+            self.savedProducts([]);
+            self.displaySidePanel(false);
         })
         .catch(function(error) {
             console.error('Something went wrong with fetch!', error);
