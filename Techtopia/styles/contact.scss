@@ -7,7 +7,76 @@
     height: 30rem;
     margin: 7rem auto;
     border-radius: 1rem;
-    border: 3px solid rgb(248, 26, 92);
+    border: 3px solid black;
+}
+
+.footer__1 {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    span {
+        color: white;
+    }
+}
+
+.footer__2 {
+    text-align: center;
+    .permalinks {
+        list-style-type: none; /* Remove bullets */
+        padding: 0; /* Remove padding */
+        margin: 0;
+    }
+    h4 {
+        color:rgb(255, 228, 236);
+    }
+    li {
+        color: white;
+        a {
+            color: white;
+        }
+    }
+}
+
+.footer__3 {
+    text-align: center;
+    .privacy {
+        list-style-type: none; /* Remove bullets */
+        padding: 0; /* Remove padding */
+        margin: 0;
+    }
+    h4 {
+        color:rgb(255, 228, 236);
+    }
+    li {
+        color: white;
+        a {
+            color: white;
+        }
+    }
+}
+
+.footer__4 {
+    text-align: center;
+    .footer__socials {
+        text-align: center;
+        list-style-type: none; /* Remove bullets */
+        padding: 0; /* Remove padding */
+        margin: 0;
+        justify-content: center;
+    }
+    h4 {
+        color:rgb(255, 228, 236);
+    }
+    p {
+        color: white;
+    }
+    li {
+        color: white;
+        a {
+            color: white;
+        }
+    }
 }
 
 /* =============================== ASIDE ================================ */
@@ -40,6 +109,17 @@
     gap: 1rem;
     align-items: center;
     margin-bottom: 1rem;
+}
+
+.contact__details {
+    li {
+        i {
+            color: white;
+        }
+        h5 {
+            color: white;
+        }
+    }
 }
 
 .contact__socials {

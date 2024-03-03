@@ -180,7 +180,7 @@ h3, h5 {
 
 /* Footer */
 .footer {
-  background: rgb(248, 26, 92);
+  background: black;
   padding-top: 5rem;
   font-size: 0.9rem;
 }
@@ -223,7 +223,7 @@ h3, h5 {
   text-align: center;
   margin-top: 4rem;
   padding: 1.2rem 0;
-  border-top: 1px dotted black;
+  border-top: 1px dotted #212529;
 }
 
 .rds {
@@ -409,11 +409,12 @@ h3, h5 {
   /* justify-content: center; */
   align-items: center;
   padding: 10px;
-  padding-left: 40px;
-  border: 2px solid rgb(248, 26, 92);
-  border-radius: 8px;
-  margin-right: -55px;
+  /* padding-left: 40px; */
+  border: 2px solid black;
+  border-radius: 0 8px 8px 0;
+  /* margin-right: -8px; */
   border-left: 0;
+  z-index: -1;
 }
 
 .register-btn {
@@ -471,4 +472,8 @@ td {
 }
 .modal-header h5 {
   color: white;
+}
+
+ul {
+  padding-left: 0 !important;
 }/*# sourceMappingURL=style.css.map */

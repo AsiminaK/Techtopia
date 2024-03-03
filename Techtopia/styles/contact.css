@@ -7,7 +7,76 @@
   height: 30rem;
   margin: 7rem auto;
   border-radius: 1rem;
-  border: 3px solid rgb(248, 26, 92);
+  border: 3px solid black;
+}
+
+.footer__1 {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.footer__1 span {
+  color: white;
+}
+
+.footer__2 {
+  text-align: center;
+}
+.footer__2 .permalinks {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0;
+}
+.footer__2 h4 {
+  color: rgb(255, 228, 236);
+}
+.footer__2 li {
+  color: white;
+}
+.footer__2 li a {
+  color: white;
+}
+
+.footer__3 {
+  text-align: center;
+}
+.footer__3 .privacy {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0;
+}
+.footer__3 h4 {
+  color: rgb(255, 228, 236);
+}
+.footer__3 li {
+  color: white;
+}
+.footer__3 li a {
+  color: white;
+}
+
+.footer__4 {
+  text-align: center;
+}
+.footer__4 .footer__socials {
+  text-align: center;
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0;
+  justify-content: center;
+}
+.footer__4 h4 {
+  color: rgb(255, 228, 236);
+}
+.footer__4 p {
+  color: white;
+}
+.footer__4 li {
+  color: white;
+}
+.footer__4 li a {
+  color: white;
 }
 
 /* =============================== ASIDE ================================ */
@@ -39,6 +108,13 @@
   gap: 1rem;
   align-items: center;
   margin-bottom: 1rem;
+}
+
+.contact__details li i {
+  color: white;
+}
+.contact__details li h5 {
+  color: white;
 }
 
 .contact__socials {
