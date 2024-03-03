@@ -431,12 +431,16 @@ border: 2px solid #555;
     background: linear-gradient(90deg, black 0%, rgb(248, 26, 92) 65%);
     color: white;
     border: 0;
+    opacity: 0.9;
 }
 
 .register-btn:hover {
-    background: linear-gradient(90deg, rgb(248, 26, 92) 0%, black 65%);
+    background: linear-gradient(90deg, black 0%, rgb(248, 26, 92) 65%);
     color: white;
+    border: 0;
+    opacity: 1;
 }
+
 
 td {
     border-color: #E0E0E0;

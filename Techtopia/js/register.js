@@ -13,6 +13,7 @@ var NewUserViewModel = function () {
 var RegisterViewModel = function () {
     var self = this;
     self.newUser = new NewUserViewModel();
+    self.remembered = ko.observable()
 
     self.signUpBtn = async function () {
         var user = {
@@ -23,7 +24,8 @@ var RegisterViewModel = function () {
             email: self.newUser.Email(),
             address: self.newUser.Address(),
             city: self.newUser.City(),
-            zip: self.newUser.Zip()
+            zip: self.newUser.Zip(),
+            orders: []
         };
         
         try {
@@ -40,11 +42,18 @@ var RegisterViewModel = function () {
                     alert('Registration Failed');
                     return;
                 }
+                alert('Registration Succeeded');
                 var fetchedData = await response.json();
                 console.log(fetchedData);
                 
-                localStorage.setItem("data", JSON.stringify(fetchedData));
-                window.location.href = "http://127.0.0.1:5501/Index.html";
+                if (self.remembered()) {
+                    localStorage.setItem("data", JSON.stringify(fetchedData));
+                    window.location.href = "http://127.0.0.1:5500/Index.html";
+                }
+                else {
+                    window.location.href = "http://127.0.0.1:5500/Login.html";
+                }
+                
             })
             .catch(function(error) {
                 console.error('Something went wrong with fetch!', error);
