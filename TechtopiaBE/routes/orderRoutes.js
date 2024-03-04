@@ -37,12 +37,12 @@ router.post('/submitOrder', fetchUsers, fetchOrders, async (req, res) => {
 
           // Save the new order
           const savedorder = await newOrder.save();
-          res.json(order);
 
-          // Respond with success message
-          res.status(200).send('Order submitted successfully');
+          // Respond with ORDER
+          res.json(order);
       } catch (error) {
           console.error(error);
+          res.status(500).send('Internal Server Error');
       }
     }
   

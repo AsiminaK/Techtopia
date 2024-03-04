@@ -79,7 +79,7 @@ var MainViewModel = function (data) {
     self.isActive = ko.observable(false);
     self.user = ko.observable(new UserViewModel());
     self.categoryData = data.categories;
-    self.ordersData = data.orders;
+    self.ordersData = ko.observable(data.orders);
     self.selectedCategory = ko.observable('All Products');
 
     self.savedProducts = ko.observableArray([]);
@@ -128,10 +128,7 @@ var MainViewModel = function (data) {
           if (selectedCategory === undefined || selectedCategory === category.name || selectedCategory === "All Products") {
             category.products.forEach(function (productData) {
               self.existingProduct(false);
-              if (
-                searching === "" ||
-                productData.name.toLowerCase().includes(searching)
-              ) {
+              if (searching === "" || productData.name.toLowerCase().includes(searching) ) {
                 var product = new Product(productData.productId, productData.name, productData.price, productData.image, productData.description);
                 product.imageText = "Alt text";
                 product.category = category.name;
@@ -214,7 +211,7 @@ var MainViewModel = function (data) {
   }
 
   self.getOrderName = function(orderId) {
-    var order = self.ordersData.find(order => order.orderId == orderId);
+    var order = self.ordersData().find(order => order.orderId == orderId);
 
     if (order) {
       return order.orderDate;
@@ -225,7 +222,7 @@ var MainViewModel = function (data) {
   }
 
   self.orderDetailsBtn = function(orderId) {
-    var myOrders = self.ordersData.filter(order => order.userId === self.user().UserId());
+    var myOrders = self.ordersData().filter(order => order.userId === self.user().UserId());
 
     var myOrder = myOrders.find(function(order) {
       return order.orderId === orderId;
@@ -283,7 +280,7 @@ var MainViewModel = function (data) {
           orderDate: moment().format('M/D/YYYY'),
           pricePaid: self.totalPrice(),
       };
-      
+      var fetchedData;
       try {
           await fetch('http://localhost:3000/submitOrder', {
               method: 'POST',
@@ -299,12 +296,9 @@ var MainViewModel = function (data) {
                   return;
               }
               alert('Order submitted succesfully!');
-              var fetchedData = await response.json();
+              fetchedData = await response.json();
               console.log(fetchedData);
-              self.user().Orders.push(fetchData);
-              self.ordersData.push(fetchData);
-              self.savedProducts([]);
-              self.displaySidePanel(false);
+              
           })
           .catch(function(error) {
               console.error('Something went wrong with fetch!', error);
@@ -314,13 +308,17 @@ var MainViewModel = function (data) {
           console.error('Something went wrong with fetch!', error);
           throw error;
       }
+      self.ordersData().push(JSON.parse(JSON.stringify(fetchedData)));
+      self.user().Orders.push(JSON.parse(JSON.stringify(fetchedData)));
+      self.savedProducts([]);
+      self.displaySidePanel(false);
     }
     
   }
 
   self.isPaymentModal = ko.observable(true);
   self.paymentModalHide = function () {
-    self.isPaymentModal(false);
+    $('#paymentModal').modal('hide');
   }
 
   // Observable to track the state of the off-canvas panel
@@ -365,3 +363,7 @@ $(document).ready(async function () {
         console.error('Error during document ready:', error);
     }
 });
+
+function paymentModalHide() {
+  $('#paymentModal').modal('hide');
+}

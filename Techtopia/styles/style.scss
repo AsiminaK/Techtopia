@@ -498,3 +498,18 @@ td {
 ul {
     padding-left: 0 !important;
 }
+
+.cartImgBtn {
+    position: relative;
+
+    .cart-badge {
+        position: absolute;
+        top: -10px;
+        right: 40px;
+        background-color: rgb(223, 15, 77);
+        color: white;
+        border-radius: 90%;
+        padding: 1px 8px;
+        font-size: 12px;
+    }
+}
