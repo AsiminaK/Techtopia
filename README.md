@@ -1,5 +1,7 @@
 # TechTopia
 
+![1713903968378](https://github.com/AsiminaK/Techtopia/assets/61188081/b556b5f4-b8f4-4d22-baff-b92563397938)
+
 Welcome to TechTopia - your ultimate destination for all things technology! This repository is a frontend-focused project serving as a thesis for University of Piraeus, showcasing the power and versatility of KnockoutJS. Dive into the world of e-commerce with TechTopia, where we explore the latest gadgets, innovations, and trends in the tech industry.
 
 ## Features
